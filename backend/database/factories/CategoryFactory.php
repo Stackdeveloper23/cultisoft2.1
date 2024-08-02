@@ -16,6 +16,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word, // Genera una palabra para el nombre de la categoría
-            ];
+            'description' => $this->faker->paragraph,    
+        ];
     }
 }

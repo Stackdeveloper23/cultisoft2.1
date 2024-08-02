@@ -1,3 +1,6 @@
+
+import SessionCustomer from "../components/auth/SessionCustomer"
+import UserName from "../components/auth/UserName"
 import Carrusel from "../components/common/carrusel"
 import CategoryList from "../components/common/categoryList"
 import Footer from "../components/common/footer"
@@ -8,10 +11,13 @@ import ProductList from "../components/common/productList"
 
   
 
-const HomePage = () => {
+const CustomerPage = () => {
     return (
         <>
-        <Navbar/>
+        <Navbar>
+        <UserName />
+        <SessionCustomer/>
+        </Navbar>
         <Carrusel/>
         <section id="products_section">
         <h1 className="text-center mb-5" id="products_title">Productos Mas Vendidos</h1>
@@ -26,4 +32,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default CustomerPage;

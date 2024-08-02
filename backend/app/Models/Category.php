@@ -9,12 +9,16 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name']; // Campos fillable según tu estructura
+    protected $fillable = [
+        'name',
+        'description',
+    ]; 
+    // Campos fillable según tu estructura
 
     // Relación uno a muchos con Product
     public function products()
     {
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Product::class);
     }
 }
 /*

@@ -1,8 +1,32 @@
 #carouselExampleAutoplaying{
-    min-height: 400px;
+    width: 100%;
+    height: 450px;
 }
 .carousel-item img {
-    object-fit: cover;
-    height: 100%; 
+    height: 450px; 
     width: 100%; 
+    object-fit: contain;
   }
+
+
+  #products_section{
+    background-image: url('./assets/img/fondo.jpg');
+    background-repeat: repeat; 
+    background-size: cover; 
+    background-position: center; 
+    padding: 2rem;
+  
+}
+
+#products_title{
+    color: black ;
+    background-color: #f8bbc8c7 !important;
+    border-radius: 20px;
+}
+
+#footer{
+    background-color: #212529;
+    color: #dee2e6;
+    --bs-secondary-color: rgba(222, 226, 230, 0.75);
+    --bs-emphasis-color-rgb: 255, 255, 255;
+}

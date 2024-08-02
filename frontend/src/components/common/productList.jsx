@@ -20,10 +20,12 @@ const ProductList = () => {
     }, []);
 
     return (
-        <div className="card-container d-flex flex-wrap">
+        <div className=" d-flex justify-content-center">
+        <div className="card-container d-flex flex-wrap justify-content-center" style={{maxWidth: "1200px"}}>
             {products.map(product => (
                 <CardProduct key={product.id} product={product} />
             ))}
+            </div>
         </div>
     );
 };

@@ -2,17 +2,18 @@ import { Link } from "react-router-dom";
 import logo from '../../assets/img/logo.png';
 
 
-const navbar = () => {
+const navbar = ({ children }) => {
 return (
-    <nav className="navbar navbar-expand-lg d-flex"  style={{ flexDirection: "column", backgroundColor: "#FFF8DC"}}>
+    <nav className="navbar navbar-expand-lg d-flex"  style={{ flexDirection: "column", backgroundColor: "#FEF6C4"}}>
   <div className="container-fluid col-sm-12" > 
-    <Link to="/home" className="navbar-brand">
+    <Link to="/home" className="d-flex navbar-brand align-items-center">
     <img
                         src={logo}
                         className="navbar-brand"
                         alt="logo"
-                        style={{ width: "80px", height: "auto" }}
+                        style={{ width: "40px", height: "auto" }}
                     />
+                    <h4>CultiSoft</h4>
                     </Link>
 
                     <form className="d-flex" role="search">
@@ -36,36 +37,7 @@ return (
         </div>   
 
          {/*cuenta */}
-          <div style={{paddingRight: "15px"}}>
-            <button type="button" className="btn btn-outline-warning">
-              <a className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)" }}
-                href="inicio_sesion.php">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person"
-                  viewBox="0 0 16 16">
-                  <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                </svg>
-                Cuenta
-              </a>
-            </button>
-        </div>
-
-      {/* account icon*/ }
-      <ul className="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-          <span className="material-symbols-outlined" style={{fontSize: "40px"}}>
-          account_circle
-          </span>
-                <li className="nav-item dropdown">
-                
-                    <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw"></i></a>
-                    <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a className="dropdown-item" href="#!">Settings</a></li>
-                        <li><a className="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr className="dropdown-divider" /></li>
-                        <li><a className="dropdown-item" href="">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
+        {children}
 
   </div>
 
@@ -78,10 +50,10 @@ return (
 
 
     {/*boton categorias */}
-  <div style={{paddingRight: "15px"}}>
-            <button type="button" className="btn btn-outline-warning">
+  <div className="row" style={{paddingRight: "15px"}}>
+            <button type="button" className="btn btn-outline-warning d-flex">
               <a className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)" }}
-                href="inicio_sesion.php">
+               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person"
                   viewBox="0 0 16 16">
                   <path
@@ -89,12 +61,23 @@ return (
                 </svg>
                 Categorias
               </a>
+              
+            
+                <a className="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="fas fa-user fa-fw"></i></a>
+                <ul className="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <li><a className="dropdown-item" href="#!">Settings</a></li>
+                    <li><a className="dropdown-item" href="#!">Activity Log</a></li>
+                    <li><hr className="dropdown-divider" /></li>
+                    <li><a className="dropdown-item">Logout</a></li>
+                </ul>
+            
             </button>
+            
         </div> 
 
 {/* boton carrito */}
 <div style={{paddingRight: "15px"}}>
-            <button type="button" className="btn btn-outline-warning position-relative">
+            <button type="button" className="btn btn-outline-warning position-relative" >
               <a className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)"}}
                 href="">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart3"
@@ -114,7 +97,7 @@ return (
      {/* ingresar*/}
           <div style={{paddingRight: "15px"}}>
             <button type="button" className="btn btn-outline-warning">
-              <a className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)" }}
+              <Link to='/login' className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)" }}
                 href="inicio_sesion.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person"
                   viewBox="0 0 16 16">
@@ -122,7 +105,7 @@ return (
                     d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
                 </svg>
                 ingresar
-              </a>
+              </Link>
             </button>
         </div>     
 </div>

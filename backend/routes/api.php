@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\Api\Admin\CategoryController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function(){
@@ -17,6 +16,7 @@ Route::prefix('v1')->group(function(){
    Route::get('/product/{slug}', [ProductController::class, 'show']);
    Route::post('/auth/register', [AuthController::class, 'register']);
    Route::post('/auth/login',[AuthController::class, 'login'])->name('login');
+   Route::get('/category', [CategoryController::class, 'index']);
    
    //private
    Route::group(['middleware' => 'auth:sanctum'], function (){
@@ -41,7 +41,8 @@ Route::post('/cart/clear', [CartController::class, 'clear']);
         Route::resource('/admin/products', ProductController::class);
         Route::resource('/admin/categories', CategoryController::class);
         //Route::apiResource('/admin/orders', [OrderController::class]);
-        Route::resource('/admin/users', UserController::class);
+        Route::get('/admin/users', [UserController::class, 'show']);
+        Route::resource('/admin/user', UserController::class);
     });
   });
 });

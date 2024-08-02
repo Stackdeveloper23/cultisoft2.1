@@ -18,13 +18,10 @@ const Carrusel = () => {
               <div className="carousel-item">
                 <img src={imgCarrusel1}  />
               </div>
-              <div className="carousel-item">
-                <img src="" />
-              </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
               data-bs-slide="prev" style={{borderRadius: "200px", width: "50px"}}>
-              <span className="carousel-control-prev-icon" style={{backgroundColor: "rgb(170, 170, 170)"}}aria-hidden="true"></span>
+              <span className="carousel-control-prev-icon" style={{backgroundColor: "rgb(170, 170, 170)", borderRadius: "100%"}}aria-hidden="true"></span>
               <span className="visually-hidden">Previous</span>
             </button>
             <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
