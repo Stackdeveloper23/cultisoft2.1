@@ -35,9 +35,9 @@ const CategoryDropdown = () => {
       <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
         {categories.length > 0 ? (
           categories.map((category) => (
-            <li key={category.id}>
-              <Link to={`/category/${category.id}`} className="dropdown-item" >{category.name}</Link>
-            </li>
+            <Link key={category.id} to={`/category/${category.id}`}>
+              <li  className="dropdown-item" >{category.name}</li>
+            </Link>
           ))
         ) : (
           <li>No categories available</li> // Mensaje en caso de no haber categorías
