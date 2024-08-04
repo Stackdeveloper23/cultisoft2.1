@@ -17,6 +17,8 @@ Route::prefix('v1')->group(function(){
    Route::post('/auth/register', [AuthController::class, 'register']);
    Route::post('/auth/login',[AuthController::class, 'login'])->name('login');
    Route::get('/category', [CategoryController::class, 'index']);
+   Route::get('/categories',[CategoryController::class, 'categories']);
+   Route::get('/category/{categoryId}/products',[CategoryController::class,'getProductsByCategory']);
    
    //private
    Route::group(['middleware' => 'auth:sanctum'], function (){

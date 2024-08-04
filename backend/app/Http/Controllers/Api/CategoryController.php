@@ -20,4 +20,19 @@ class CategoryController extends Controller
     return response()->json($data, 200);
   }
 
+  public function categories(){
+    $categories = Category::All();
+    return response()->json($categories,200);
+  }
+
+  public function getProductsByCategory($categoryId)
+  {
+    $category = Category::find($categoryId);
+    if(!$category){
+      return response()->json(['message' => 'Category not found'], 404);
+    }
+    $products = $category->products;
+    return response()->json($products);
+  }
+
 }

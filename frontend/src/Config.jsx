@@ -48,4 +48,24 @@ export default{
         }
     },
 
+    getAllCategories: async()=> {
+        try{
+            const response = await axios.get(`${base_api_url}/categories`)
+        return response.data;    
+        } catch (error) {
+            console.error('error al obtener categorias', error)
+            }
+    },
+
+    getProductsByIdCategory: async(categoryId)=> {
+        try{
+            console.log('Category ID:', categoryId);
+
+            const response = await axios.get(`${base_api_url}/category/${categoryId}/products`);
+        return response.data;  
+        } catch (error) {
+            console.error('error al obtener productos', error)
+            }
+    }
+
     }
