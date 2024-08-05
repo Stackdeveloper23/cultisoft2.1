@@ -6,6 +6,7 @@ import ProtectedRoutes from './components/auth/ProtectedRoutes';
 import CustomerPage from './pages/CustomerPage';
 import LayoutCustomer from './components/layout/LayoutCustomer';
 import CategoryPage from './pages/CategoryPage';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
        <Route path='/' element={<HomePage />} /> 
        <Route path='/login' element={<Login/>}/>
        <Route path='/category/:categoryId' element={<CategoryPage/>}/>
+       <Route path='/product/:id' element={<ProductDetails/>}/>
 
        <Route element={<ProtectedRoutes/>}>
 

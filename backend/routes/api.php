@@ -18,6 +18,7 @@ Route::prefix('v1')->group(function(){
    Route::post('/auth/login',[AuthController::class, 'login'])->name('login');
    Route::get('/category', [CategoryController::class, 'index']);
    Route::get('/categories',[CategoryController::class, 'categories']);
+   Route::get('/category/{id}',[CategoryController::class, 'show']);
    Route::get('/category/{categoryId}/products',[CategoryController::class,'getProductsByCategory']);
    
    //private

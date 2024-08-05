@@ -133,7 +133,7 @@ const submitLogin = async(e) =>{
 
 {/* fill-rule="evenodd" */}
              <button type="button" className="btn btn-outline-danger" style={{backgroundColor: "white", color: "rgb(0, 163, 71)"}}>
-             <Link to="/home">
+             <Link to="/">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-bar-left"
                     viewBox="0 0 16 16">
                     <path

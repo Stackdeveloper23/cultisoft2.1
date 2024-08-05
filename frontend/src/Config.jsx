@@ -66,6 +66,25 @@ export default{
         } catch (error) {
             console.error('error al obtener productos', error)
             }
-    }
 
+    },
+
+    getCategoryById: async(categoryId)=> {
+        try{
+            const response = await axios.get(`${base_api_url}/category/${categoryId}`);
+            return response.data;
+        }catch (error) {
+            console.log('error al mostrar la categoria', error)
+        }
+    },
+
+    getProduct: async (id)=> {
+        try{
+            const response = await axios.get(`${base_api_url}/product/${id}`);
+            console.log('respuesta' , response)
+            return response.data;
+        }catch (error) {
+            console.log('error de info de producto', error)
+        }
+    },
     }

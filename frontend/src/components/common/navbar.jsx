@@ -7,7 +7,7 @@ const navbar = ({ children }) => {
 return (
     <nav className="navbar navbar-expand-lg d-flex"  style={{ flexDirection: "column", backgroundColor: "#FEF6C4"}}>
   <div className="container-fluid col-sm-12" > 
-    <Link to="/home" className="d-flex navbar-brand align-items-center">
+    <Link to="/" className="d-flex navbar-brand align-items-center">
     <img
                         src={logo}
                         className="navbar-brand"
@@ -55,9 +55,7 @@ return (
       <div className="dropdown">
         <button
           type="button"
-          className="btn btn-outline-warning d-flex align-items-center dropdown-toggle"
-          id="categoryDropdown"
-          data-bs-toggle="dropdown"
+          className="btn btn-outline-warning d-flex align-items-center"
           aria-expanded="false"
         >
           Categorias

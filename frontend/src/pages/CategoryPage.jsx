@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Config from '../Config';
 import Navbar from "../components/common/navbar";
+import CardProduct from '../components/common/cardProduct';
 
 
 const CategoryPage = () => {
   const { categoryId } = useParams();
   const [products, setProducts] = useState([]);
+  const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -19,6 +21,16 @@ const CategoryPage = () => {
       }
     };
 
+    const fetchCategory = async () => {
+      try{
+        const response = await Config.getCategoryById(categoryId);
+        setCategoryName(response.name);
+      }catch (error){
+        console.error('error category', error)
+      }
+    };
+
+    fetchCategory();
     fetchProducts();
   }, [categoryId]);
 
@@ -26,12 +38,14 @@ const CategoryPage = () => {
   return (
     <div>
         <Navbar/>
-      <h1>Products in Category {categoryId}</h1>
-      <ul>
+        <div className="container">
+      <h1 className='d-flex justify-content-center mt-4'>Category {categoryName}</h1>
+      <div className='card-container d-flex flex-wrap justify-content-center'>
         {products.map((product) => (
-          <li key={product.id}>{product.name}</li>
+          <CardProduct key={product.id} product={product} />
         ))}
-      </ul>
+      </div>
+      </div>
     </div>
   );
 };
