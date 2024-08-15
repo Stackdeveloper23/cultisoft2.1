@@ -68,8 +68,8 @@ return (
 {/* boton carrito */}
 <div style={{paddingRight: "15px"}}>
             <button type="button" className="btn btn-outline-warning position-relative" >
-              <a className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)"}}
-                href="">
+              <Link className="icon-link icon-link-hover" style={{"--bs-icon-link-transform": "translate3d(0, -.125rem, 0)"}}
+               to='cart'>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-cart3"
                   viewBox="0 0 16 16">
                   <path
@@ -79,7 +79,7 @@ return (
                 <span id=" num_cart" className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
                </span>
                   <span  className="visually-hidden">unread messages</span>
-              </a>
+              </Link>
             </button>
           </div>
 

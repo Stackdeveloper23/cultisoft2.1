@@ -7,6 +7,7 @@ import CustomerPage from './pages/CustomerPage';
 import LayoutCustomer from './components/layout/LayoutCustomer';
 import CategoryPage from './pages/CategoryPage';
 import ProductDetails from './pages/ProductDetails';
+import ShoppingCart from './pages/ShoppingCart';
 
 function App() {
 
@@ -21,7 +22,8 @@ function App() {
        <Route element={<ProtectedRoutes/>}>
 
       <Route path='/customer'element={<LayoutCustomer/>}>
-      <Route index element={<CustomerPage/>}/>   
+      <Route index element={<CustomerPage/>}/>
+      <Route path='cart' element={<ShoppingCart/>}/>   
       </Route>
 
       </Route>
