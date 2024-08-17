@@ -87,4 +87,32 @@ export default{
             console.log('error de info de producto', error)
         }
     },
+
+    CreatePreference: async ()=> {
+        const token = getToken();
+        try{
+          const response = await axios.post(`${base_api_url}/create-payment-preference`, {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+          return response.data;
+        }catch (error){
+          console.log('error al crear la preferencia', error)
+        }},
+
+        getAddToCart: async (id) => {
+          const token = getToken();  // Obtener el token
+          try {
+            const response = await axios.post(`${base_api_url}/cart/add/${id}`, {}, {
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+            return response.data;
+          } catch (error) {
+            console.error('Error al agregar el producto:', error);
+          }
+        },
+
     }

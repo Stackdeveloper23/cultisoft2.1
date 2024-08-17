@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\MercadoPagoController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function(){
@@ -35,7 +36,15 @@ Route::get('/cart', [CartController::class, 'show']);
 Route::post('/cart/add/{productId}', [CartController::class, 'add']);
 Route::delete('/cart/remove/{itemId}', [CartController::class, 'remove']);
 Route::post('/cart/clear', [CartController::class, 'clear']);
+Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
+Route::get('/mercadopago/success', function () {
+  return 'Pago realizado con éxito';
+})->name('mercadopago.success');
 
+// Ruta de fallo para MercadoPago
+Route::get('/mercadopago/failed', function () {
+  return 'Pago fallido';
+})->name('mercadopago.failed');
 
 //Admin
     Route::middleware(['auth', 'admin'])->group(function () {

@@ -3,6 +3,8 @@ import Config from "../Config";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/common/navbar";
 import Footer from "../components/common/footer";
+import UserName from "../components/auth/UserName";
+import SessionCustomer from "../components/auth/SessionCustomer";
 
 
 const ProductDetails = () => {
@@ -23,6 +25,16 @@ const ProductDetails = () => {
 
         fetchProducts();
     },[id]);
+
+    const addToCart = async () => {
+        try {
+            const response = await Config.getAddToCart(id);
+            console.log('Producto agregado al carrito:', response);
+            // Puedes mostrar una notificación o actualizar el estado del carrito aquí
+        } catch (error) {
+            console.error('Error al agregar el producto al carrito:', error);
+        }
+    };
     
     if (!product) {
         return <div>Loading...</div>;
@@ -30,7 +42,10 @@ const ProductDetails = () => {
 
     return (
         <div style={{backgroundColor: "rgba(156, 149, 149, 0.267)"}}>
-        <Navbar />
+       <Navbar>
+        <UserName />
+        <SessionCustomer/>
+        </Navbar>
         <div className="container mt-5 mb-5">
             <div className="row">
         <div className="col-sm-6 order-md-1">
@@ -40,6 +55,7 @@ const ProductDetails = () => {
     <h5 className="">{product.name}</h5>
     <p className="lead">{product.description}</p>
     <a href="#" className="btn btn-primary">${product.price}</a>
+    <button className="btn btn-primary" onClick={addToCart}>Agregar al carrito</button>
   </div>
 </div>
 

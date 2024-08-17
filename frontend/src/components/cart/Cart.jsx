@@ -1,7 +1,29 @@
 import { Link } from "react-router-dom";
 import styles from '../../assets/style/carrito.module.css';
+import { useEffect, useState } from "react";
+import MercadoPagoButton from "./MercadoPagoButton";
+import Config from "../../Config";
 
 const Cart = () => {
+  const [preferenceId, setPreferenceId] = useState(null);
+
+  useEffect(() => {
+    const createPreference = async () => {
+      try {
+        const response = await Config.CreatePreference({
+          title: 'Producto de ejemplo',
+          quantity: 1,
+          price: 100,
+        });
+        setPreferenceId(response.data.id);
+      } catch (error) {
+        console.error('Error al crear la preferencia de pago:', error);
+      }
+    };
+  
+    createPreference();
+  }, []);
+
     return(
 <div className={styles.card + " mt-3 mb-5"}>
     <div className="row">
@@ -78,8 +100,16 @@ const Cart = () => {
             <div className="row">Precio Total</div>
             <span id="total" className="h4"></span>
           </div>
-
+          <div className="row">
+        {preferenceId ? (
+        <MercadoPagoButton preferenceId={preferenceId} />
+      ) : (
+        <p>Cargando...</p>
+      )}
         </div>
+        </div>
+
+       
                  
         <div className=" w-25 h-25 mt-0">
           <button className={`volver btn mt-0`} type="submit" style={{textDecoration: "none"}}>

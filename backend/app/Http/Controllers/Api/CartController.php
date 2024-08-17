@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+
     public function show()
     {
         $cart = Cart::where('user_id', Auth::id())->with('items.product')->firstOrFail();
@@ -47,4 +48,6 @@ class CartController extends Controller
 
         return response()->json(['success' => true]);
     }
+
+
 }
