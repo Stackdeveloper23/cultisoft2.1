@@ -36,6 +36,7 @@ Route::get('/cart', [CartController::class, 'show']);
 Route::post('/cart/add/{productId}', [CartController::class, 'add']);
 Route::delete('/cart/remove/{itemId}', [CartController::class, 'remove']);
 Route::post('/cart/clear', [CartController::class, 'clear']);
+Route::patch('/cart/items/{itemId}', [CartController::class, 'updateQuantity']);
 Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
 Route::get('/mercadopago/success', function () {
   return 'Pago realizado con éxito';

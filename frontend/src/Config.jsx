@@ -115,4 +115,47 @@ export default{
           }
         },
 
+        getCartProducts: async () => {
+          const token = getToken();
+          try {
+              const response = await axios.get(`${base_api_url}/cart`, {
+                  headers: {
+                      'Authorization': `Bearer ${token}`
+                  }
+              });
+              return response;
+          } catch (error) {
+              console.error('Error al traer productos al carrito:', error);
+          }
+        },
+
+        getCartDelete: async (itemId) => {
+          const token = getToken();  
+          console.log('token de usuario:', token);
+          try {
+              const response = await axios.delete(`${base_api_url}/cart/remove/${itemId}`, {
+                  headers: {
+                      'Authorization': `Bearer ${token}`
+                  }
+              });
+              return response;
+          } catch (error) {
+              console.error('Error al traer productos al carrito:', error);
+          }
+        },
+
+        CartQuantity: async (itemId, quantity) => {
+          const token = getToken();  
+          console.log('token de usuario:', token);
+          try {
+              const response = await axios.patch(`${base_api_url}/cart/items/${itemId}`, { quantity }, {
+                  headers: {
+                      'Authorization': `Bearer ${token}`
+                  }
+              });
+              return response;
+          } catch (error) {
+              console.error('Error al traer productos al carrito:', error);
+          }
+        },
     }
