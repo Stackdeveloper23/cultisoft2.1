@@ -11,6 +11,9 @@ const getToken =()=>{
 export default{
 
     getLogin: (data)=>axios.post(`${base_api_url}/auth/login`,data),
+
+    
+    SearchBar: (query)=>axios.get(`${base_api_url}/search`,{params: { query }}),
     
     getLogout: (data) => {
         const token = getToken();
@@ -91,7 +94,7 @@ export default{
     CreatePreference: async ()=> {
         const token = getToken();
         try{
-          const response = await axios.post(`${base_api_url}/create-payment-preference`, {
+          const response = await axios.post(`${base_api_url}/create-payment-preference`,{}, {
             headers: {
               'Authorization': `Bearer ${token}`
             }
@@ -158,4 +161,6 @@ export default{
               console.error('Error al traer productos al carrito:', error);
           }
         },
+
+
     }

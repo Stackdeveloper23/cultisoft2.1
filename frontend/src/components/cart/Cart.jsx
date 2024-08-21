@@ -5,7 +5,6 @@ import MercadoPagoButton from "./MercadoPagoButton";
 import Config from "../../Config";
 
 const Cart = () => {
-  const [preferenceId, setPreferenceId] = useState(null);
   const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
@@ -29,22 +28,7 @@ const Cart = () => {
     };
 
     fetchCartItems();
-    
-    // Crear preferencia de MercadoPago
-    const createPreference = async () => {
-      try {
-        const response = await Config.CreatePreference({
-          title: 'Producto de ejemplo',
-          quantity: 1,
-          price: 100,
-        });
-        setPreferenceId(response.data.id);
-      } catch (error) {
-        console.error('Error al crear la preferencia de pago:', error);
-      }
-    };
-
-    createPreference();
+   
   }, []);
 
 
@@ -90,7 +74,7 @@ const Cart = () => {
   }
 
     return(
-<div className={styles.card + " mt-3 mb-5"}>
+<div className={styles.card + " mt-5 mb-5"}>
     <div className="row">
       <div className={`col-md-8 ${styles.cart}`}>
 
@@ -171,11 +155,7 @@ const Cart = () => {
             </span>
           </div>
           <div className="row">
-        {preferenceId ? (
-        <MercadoPagoButton preferenceId={preferenceId} />
-      ) : (
-        <p>Cargando...</p>
-      )}
+        <MercadoPagoButton />
         </div>
         </div>
 
