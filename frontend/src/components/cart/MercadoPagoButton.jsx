@@ -23,7 +23,6 @@ const MercadoPagoButton = () => {
             price: 100.0
         });
 
-        console.log('api response:', response);
         if (response && response.data && response.data.id) {
         // Inicializar el botón de pago
         mp.checkout({

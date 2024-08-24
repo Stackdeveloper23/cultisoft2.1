@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Admin\AdminCategoriesController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
@@ -53,10 +54,10 @@ Route::get('/mercadopago/failed', function () {
 
 //Admin
     Route::middleware(['auth', 'admin'])->group(function () {
-        Route::get('/admin', 'AdminController@index')->name('admin.index');
+        //Route::get('/admin', 'AdminController@index')->name('admin.index');
     
         Route::resource('/admin/products', ProductController::class);
-        Route::resource('/admin/categories', CategoryController::class);
+        Route::get('/admin/categories', [AdminCategoriesController::class, 'index']);
         //Route::apiResource('/admin/orders', [OrderController::class]);
         Route::get('/admin/users', [UserController::class, 'show']);
         Route::resource('/admin/user', UserController::class);
