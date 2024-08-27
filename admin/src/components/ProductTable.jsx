@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Config from "../Config";
-import UserEdit from "./UserEdit";
-import UserCreate from "./UserCreate";
+import ProductEdit from "./ProductEdit";
+import ProductCreate from "./ProductCreate";
 
 const ProductTable = () => {
   const [products, setProducts] = useState([]);
@@ -46,8 +46,9 @@ const ProductTable = () => {
       <h1 className="w-100 d-flex justify-content-center">Product Table</h1>
       <div className="container">
         <div>
-          <UserCreate/>
+          <ProductCreate/>
         </div>
+        <div className="table-responsive">
         <table className="table">
           <thead>
             <tr>
@@ -57,7 +58,9 @@ const ProductTable = () => {
               <th scope="col">Estado</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Precio</th>
-              <th scope="col">Creado el:</th>
+              <th scope="col">Imagen:</th>
+              <th scope="col">Cantidad:</th>
+              <th scope="col">Categoria:</th>
               <th scope="col">Accion:</th>
             </tr>
           </thead>
@@ -69,10 +72,13 @@ const ProductTable = () => {
                 <td>{product.name || "N/A"}</td>
                 <td>{product.status || "N/A"}</td>
                 <td>{product.description || "N/A"}</td>   
-                <td>{product.price || "N/A"}</td>                 
+                <td>{product.price || "N/A"}</td>  
+                <td>{product.image_path || "N/A"}</td>
+                <td>{product.quantity || "N/A"}</td>
+                <td>{product.category_id || "N/A"}</td>               
                 <td>{product.created_at || "N/A"}</td>
                 <td>
-                  <UserEdit id={product.id} />
+                  <ProductEdit id={product.id} />
 
                   <button
                     className="btn btn-danger d-flex w-30"
@@ -85,6 +91,7 @@ const ProductTable = () => {
             ))}
           </tbody>
         </table>
+        </div>
       </div>
     </>
   );

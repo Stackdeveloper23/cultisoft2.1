@@ -111,7 +111,7 @@ export default{
         //PRODUCTOS
         createProducts: (data) => {
           const token = getToken();
-          return axios.post(`${base_api_url}/admin/products/createProduct`,data,{
+          return axios.post(`${base_api_url}/admin/product/create`,data,{
             headers: {
               'Authorization': `Bearer ${token}`
             }

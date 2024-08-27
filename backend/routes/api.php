@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
   //public
+
   
   Route::post('/auth/register', [AuthController::class, 'register']);
   Route::post('/auth/login', [AuthController::class, 'login'])->name('login');
@@ -70,10 +71,9 @@ Route::prefix('v1')->group(function () {
       Route::put('/admin/user/edit/{id}', [UserController::class, 'update']);  
       Route::delete('/admin/user/delete/{id}', [UserController::class, 'destroy']); 
 
-      
+      Route::post('/admin/product/create', [AdminProductController::class, 'create']);
       Route::get('/admin/product', [AdminProductController::class, 'index']);
       Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
-      Route::post('/admin/product/createProduct', [AdminProductController::class, 'create']);
       Route::put('/admin/product/edit/{id}', [AdminProductController::class, 'update']);  
       Route::delete('/admin/product/delete/{id}', [AdminProductController::class, 'destroy']); 
     });

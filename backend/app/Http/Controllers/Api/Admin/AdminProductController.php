@@ -30,9 +30,10 @@ public function create(Request $request)
 {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
-        'status' => 'required|string|in:active,inactive',
+        'status' => 'required|string',
         'description' => 'required|string',
         'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
+        'image_path' => 'required|string',
         'quantity' => 'required|integer|min:1',
         'category_id' => 'required|exists:categories,id',
     ]);
@@ -41,18 +42,23 @@ public function create(Request $request)
 
     try {
         $product = Product::create($validatedData);
+
         DB::commit();
+
         return response()->json($product, 201);
     } catch (\Exception $e) {
         DB::rollBack();
-        Log::error('Error creating product: ' . $e->getMessage(), [
+
+        // Registrar el error
+        Log::error('Error creando producto: ' . $e->getMessage(), [
             'exception' => $e,
             'request_data' => $request->all(),
         ]);
-        return response()->json(['error' => 'Failed to create product'], 500);
+
+        // Retornar una respuesta de error
+        return response()->json(['error' => 'Fallo al crear el producto'], 500);
     }
 }
-
 
       public function update(Request $request, $id)
 {

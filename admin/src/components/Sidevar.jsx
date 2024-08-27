@@ -2,8 +2,12 @@ import { Link } from "react-router-dom";
 
 const Sidervar = () => {
     return(
-        <div className="d-flex flex-column p-3 text-bg-dark" style={{height: "100vh"}}>
-        <hr/>
+        <div className="d-flex flex-column p-3 text-bg-dark" style={{height: "100%"}}>
+    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg className="bi pe-none me-2" width="40" height="32"></svg>
+      <span className="fs-4">Sidebar</span>
+    </a>
+    <hr></hr>
         <ul className="nav nav-pills flex-column mb-auto">
           <li className="nav-item">
             <Link to={"/admin"} className="nav-link active" aria-current="page">

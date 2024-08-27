@@ -1,22 +1,32 @@
 import { useEffect, useState } from "react";
 import Config from "../Config";
 
-const UserEdit = ({ id }) => {
-  const [user, setUser] = useState({
+const ProductEdit = ({ id }) => {
+  const [product, setProduct] = useState({
     name: '',
-    email: '',
+    status: '',
+    description: '',
+    price: '',
+    image_path: '',
+    quantity:'',
+    category_id:'',
   });
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await Config.getUserById(id);
-        setUser({
+        const response = await Config.getProductsById(id);
+        setProduct({
           name: response.data.name,
-          email: response.data.email,
+          status: response.data.status,          
+          description: response.data.description,
+          price: response.data.price,
+          image_path: response.data.image_path,
+          quantity: response.data.quantity,
+          category_id: response.data.category_id,
         });
       } catch (error) {
-        console.error("Error fetching users:", error);
+        console.error("Error fetching products:", error);
       }
     };
 
@@ -25,8 +35,8 @@ const UserEdit = ({ id }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setUser({
-      ...user,
+    setProduct({
+      ...product,
       [name]: value,
     });
   };
@@ -34,10 +44,10 @@ const UserEdit = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await Config.putUsers(user, id);
+      await Config.putProducts(product, id);
       window.location.reload();
     } catch (error) {
-      console.error("Error updating category:", error);
+      console.error("Error updating products:", error);
     }
   };
 
@@ -89,20 +99,85 @@ const UserEdit = ({ id }) => {
                       className="form-control"
                       id="name"
                       name="name"
-                      value={user.name}
+                      value={product.name}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="description" className="form-label">
-                      Email
+                    <label htmlFor="status" className="form-label">
+                      Estado
                     </label>
                     <input
                       className="form-control"
-                      id="email"
-                      name="email"
-                      value={user.email}
+                      id="status"
+                      name="status"
+                      value={product.status}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>  
+                  <div className="mb-3">
+                    <label htmlFor="description" className="form-label">
+                      Description
+                    </label>
+                    <input
+                      className="form-control"
+                      id="description"
+                      name="description"
+                      value={product.description}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>  
+                  <div className="mb-3">
+                    <label htmlFor="price" className="form-label">
+                      Estado
+                    </label>
+                    <input
+                      className="form-control"
+                      id="price"
+                      name="price"
+                      value={product.price}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="imagen" className="form-label">
+                      Imagen
+                    </label>
+                    <input
+                      className="form-control"
+                      id="imagen"
+                      name="imagen"
+                      value={product.image_path}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                   <div className="mb-3">
+                    <label htmlFor="quantity" className="form-label">
+                      Estado
+                    </label>
+                    <input
+                      className="form-control"
+                      id="quantity"
+                      name="quantity"
+                      value={product.quantity}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="category_id" className="form-label">
+                      Estado
+                    </label>
+                    <input
+                      className="form-control"
+                      id="category_id"
+                      name="category_id"
+                      value={product.category_id}
                       onChange={handleInputChange}
                       required
                     />
@@ -131,4 +206,4 @@ const UserEdit = ({ id }) => {
   );
 };
 
-export default UserEdit;
+export default ProductEdit;
