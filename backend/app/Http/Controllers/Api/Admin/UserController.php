@@ -27,36 +27,35 @@ class UserController extends Controller
     return response()->json($user, 200);
 }
 
-      public function create(Request $request)
-    { 
-        $validatedData = $request->validate([
-          'name' => 'required|string',
-          'email' => 'required|string|email|max:255|unique:users',
-          'password' => 'required|string|min:8|confirmed',
+public function create(Request $request)
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8|confirmed',
+    ]);
+
+    DB::beginTransaction();
+
+    try {
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
         ]);
+      
+        DB::commit();
+        return response()->json($user, 201); // Use status code 201 for resource creation
+    } catch (\Exception $e) {
+        DB::rollBack();
+        Log::error('Error creating user: ' . $e->getMessage(), [
+            'exception' => $e,
+            'request_data' => $request->all()
+        ]);
+        return response()->json(['error' => 'Failed to create user'], 500);
+    }
+}
 
-        DB::beginTransaction();
-
-        try {
-            $user = User::create($validatedData);
-          
-            // Confirmar la transacción
-            DB::commit();
-    
-            return response()->json($user, 200);
-        } catch (\Exception $e) {
-            // Revertir la transacción en caso de error
-            DB::rollBack();
-    
-            // Registrar el error en los logs
-            Log::error('Error al crear el registro: ' . $e->getMessage(), [
-                'exception' => $e,
-                'request_data' => $request->all()
-            ]);
-    
-            return response()->json(['error' => 'Failed to create user'], 500);
-        }
-      }
 
       public function update(Request $request, $id)
 {

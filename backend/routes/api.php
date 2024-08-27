@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
+use App\Http\Controllers\Api\Admin\AdminProductController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
@@ -33,7 +34,7 @@ Route::prefix('v1')->group(function () {
 
     //logout
     Route::post('/auth/logout', [AuthController::class, 'logout']);
-    Route::get('/shop', [CustomerController::class]);
+   // Route::get('/shop', [CustomerController::class]);
 
 
     //shopping Card
@@ -68,6 +69,13 @@ Route::prefix('v1')->group(function () {
       Route::post('/admin/user/createUser', [UserController::class, 'create']);
       Route::put('/admin/user/edit/{id}', [UserController::class, 'update']);  
       Route::delete('/admin/user/delete/{id}', [UserController::class, 'destroy']); 
+
+      
+      Route::get('/admin/product', [AdminProductController::class, 'index']);
+      Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
+      Route::post('/admin/product/createProduct', [AdminProductController::class, 'create']);
+      Route::put('/admin/product/edit/{id}', [AdminProductController::class, 'update']);  
+      Route::delete('/admin/product/delete/{id}', [AdminProductController::class, 'destroy']); 
     });
   });
 });
