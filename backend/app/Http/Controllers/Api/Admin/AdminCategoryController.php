@@ -8,15 +8,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
-class AdminCategoriesController extends Controller
+class AdminCategoryController extends Controller
 {
     public function index(){
 
         $categories = Category::All();
-        dd($categories);
-        Log::info('categorias:', $categories);
       return response()->json($categories,200);
       }
+
+      public function show($id)
+{
+    $category = Category::find($id);
+
+    if (!$category) {
+        return response()->json(['message' => 'Categoría no encontrada'], 404);
+    }
+
+    return response()->json($category, 200);
+}
 
       public function create(Request $request)
     { 
