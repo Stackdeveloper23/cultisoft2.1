@@ -21,7 +21,7 @@ class AdminProductController extends Controller
     $product = Product::find($id);
 
     if (!$product) {
-        return response()->json(['message' => 'procucto no encontrado'], 404);
+        return response()->json(['message' => 'producto no encontrado'], 404);
     }
 
     return response()->json($product, 200);

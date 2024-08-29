@@ -76,7 +76,7 @@ const ProductTable = () => {
                 <td>{product.image_path || "N/A"}</td>
                 <td>{product.quantity || "N/A"}</td>
                 <td>{product.category_id || "N/A"}</td>               
-                <td>{product.created_at || "N/A"}</td>
+                <td>{new Date(product.created_at).toLocaleDateString("es-CO") || "N/A"}</td>
                 <td>
                   <ProductEdit id={product.id} />
 

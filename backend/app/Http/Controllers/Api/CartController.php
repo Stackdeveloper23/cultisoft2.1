@@ -8,6 +8,8 @@ use App\Models\CartItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
@@ -73,5 +75,6 @@ class CartController extends Controller
 
     return response()->json($cartItem);
 }
+
 
 }

@@ -3,6 +3,7 @@ import AuthUser from "./AuthUser";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Config from "../Config";
+import logo from '../assets/logoCultisoft.svg';
 
 
 const Login = () => {
@@ -49,13 +50,15 @@ const Login = () => {
           <div className="card mt-5 mb-5 rounded-4">
             <div
               className="card-body rounded-4"
-              style={{ backgroundColor: "#ff6e4b" }}
+              style={{ backgroundColor: " #98FB98" }}
             >
-              <div className="svg-container mt-3 mb-5" id="logo">
+              <div className="svg-container mt-3 mb-3 d-flex justify-content-center" id="logo">
                 <img
-                  src=""
+                  src={logo}
+                  width='100px'
                   alt="logo"
                 />
+                
               </div>
               <h1 className="text-center fw-bolder mb-5">Login</h1>
               {message && (
@@ -65,7 +68,9 @@ const Login = () => {
                 </div>
               )}
               <form onSubmit={submitLogin}>
+              <div className="form-floating">
                 <input
+                  id="floatingInput1"
                   type="email"
                   className="form-control mt-3"
                   placeholder="Email:"
@@ -73,20 +78,28 @@ const Login = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-
+                <label htmlFor="floatingInput1">Email address</label>
+                </div>
+                <div className="form-floating position-relative">
                 <input
-                  type="password"
+                  id="floatingInput"
+                  type='password'
                   className="form-control mt-3"
-                  placeholder="Password:"
+                  placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <label htmlFor="floatingInput">Password</label>
+    
+                </div>
+
                 <Link to="/reset-password">Forgot Password?</Link>
-                <button type="submit" className="btn btn-primary w-100 mt-3">
+               <div className="d-flex justify-content-center"> <button type="submit" className="btn btn-primary w-50 mt-3">
                   {" "}
                   Send
                 </button>
+                </div>
               </form>
             </div>
           </div>

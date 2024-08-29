@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\Admin\AdminProductController;
+use App\Http\Controllers\Api\Admin\CompraController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CustomerController;
@@ -46,6 +47,7 @@ Route::prefix('v1')->group(function () {
     Route::post('/cart/clear', [CartController::class, 'clear']);
     Route::patch('/cart/items/{itemId}', [CartController::class, 'updateQuantity']);
     Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
+    Route::post('/compra', [CompraController::class, "create"]);
     Route::get('/mercadopago/success', function () {
       return 'Pago realizado con éxito';
     })->name('mercadopago.success');

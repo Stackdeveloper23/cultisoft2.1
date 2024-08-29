@@ -13,7 +13,7 @@ const UserTable = () => {
         console.log("Response completa:", response);
 
         if (Array.isArray(response.data)) {
-            setUsers(response.data);
+          setUsers(response.data);
         } else {
           console.error("La respuesta no es un array:", response);
           setUsers([]);
@@ -24,20 +24,18 @@ const UserTable = () => {
       }
     };
 
-    
-
     Users();
   }, []);
 
   const deleteUsersById = async (id) => {
     const isDelete = window.confirm("Delete User?");
     if (isDelete) {
-        try {
-            await Config.deleteUsers(id);
-            window.location.reload();
-          } catch (error) {
-            console.error("Error deleting category:", error);
-          }
+      try {
+        await Config.deleteUsers(id);
+        window.location.reload();
+      } catch (error) {
+        console.error("Error deleting category:", error);
+      }
     }
   };
 
@@ -46,12 +44,12 @@ const UserTable = () => {
       <h1 className="w-100 d-flex justify-content-center">User Table</h1>
       <div className="container">
         <div>
-          <UserCreate/>
+          <UserCreate />
         </div>
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>             
+              <th scope="col">#</th>
               <th scope="col">Id</th>
               <th scope="col">Nombre</th>
               <th scope="col">Email</th>
@@ -63,19 +61,28 @@ const UserTable = () => {
             {users.map((user, index) => (
               <tr key={user.id || index}>
                 <th scope="row">{index + 1}</th>
-                <td>{user.id || 'N/A'}</td>
+                <td>{user.id || "N/A"}</td>
                 <td>{user.name || "N/A"}</td>
-                <td>{user.email || "N/A"}</td>              
-                <td>{user.created_at || "N/A"}</td>
+                <td>{user.email || "N/A"}</td>
                 <td>
-                  <UserEdit id={user.id} />
+                  {new Date(user.created_at).toLocaleDateString("es-CO") ||
+                    "N/A"}
+                </td>
+                <td>
+                  {user.email !== "admin@admin.com" && ( 
+                    <>
+                      <UserEdit id={user.id} />
 
-                  <button
-                    className="btn btn-danger d-flex w-30"
-                    onClick={() => deleteUsersById(user.id)}
-                  >
-                    <span className="material-symbols-outlined">delete</span>
-                  </button>
+                      <button
+                        className="btn btn-danger d-flex w-30"
+                        onClick={() => deleteUsersById(user.id)}
+                      >
+                        <span className="material-symbols-outlined">
+                          delete
+                        </span>
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))}

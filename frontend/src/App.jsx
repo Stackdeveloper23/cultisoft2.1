@@ -8,6 +8,8 @@ import LayoutCustomer from './components/layout/LayoutCustomer';
 import CategoryPage from './pages/CategoryPage';
 import ProductDetails from './pages/ProductDetails';
 import ShoppingCart from './pages/ShoppingCart';
+import MetodoRetiro from './pages/MetodoRetiro';
+import EnvioDomicilio from './components/compra/EnvioDomicilio';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
       <Route path='/customer'element={<LayoutCustomer/>}>
       <Route index element={<CustomerPage/>}/>
       <Route path='cart' element={<ShoppingCart/>}/>   
+      <Route path='/customer/compra' element={<MetodoRetiro/>}/>
+      <Route path='/customer/compra/domicilio' element={<EnvioDomicilio/>}/>
       </Route>
 
       </Route>

@@ -154,7 +154,9 @@ const Cart = () => {
           
             </span>
           </div>
-          <div className="row">
+          <div className="row d-flex justify-content-center">
+          <Link to={'/customer/compra'}> <button className="btn btn-primary w-50" type="button">
+              Comprar</button></Link>
         <MercadoPagoButton />
         </div>
         </div>

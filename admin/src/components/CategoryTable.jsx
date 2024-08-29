@@ -65,7 +65,7 @@ const CategoryTable = () => {
                 {/* <td>{product.id || 'N/A'}</td> */}
                 <td>{category.name || "N/A"}</td>
                 <td>{category.description || "N/A"}</td>
-                <td>{category.created_at || "N/A"}</td>
+                <td>{new Date(category.created_at).toLocaleDateString("es-CO") || "N/A"}</td>
                 <td>
                   <CategoryEdit id={category.id} />
 

@@ -51,7 +51,9 @@ const UserEdit = ({ id }) => {
         data-bs-toggle="modal"
         data-bs-target={`#editModal-${id}`}
       >
-        Editar
+        <span className="material-symbols-outlined">
+edit
+</span>
       </button>
 
       {/* Modal */}

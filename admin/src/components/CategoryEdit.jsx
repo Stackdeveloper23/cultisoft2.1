@@ -6,9 +6,6 @@ const CategoryEdit = ({ id }) => {
     name: '',
     description: '',
   });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchCategory = async () => {
       try {
@@ -17,11 +14,9 @@ const CategoryEdit = ({ id }) => {
           name: response.data.name,
           description: response.data.description,
         });
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching category:", error);
-        setError("Error al cargar la categoría.");
-        setLoading(false);
+
       }
     };
 
@@ -46,8 +41,6 @@ const CategoryEdit = ({ id }) => {
     }
   };
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>{error}</p>;
 
   return (
     <>
@@ -58,7 +51,9 @@ const CategoryEdit = ({ id }) => {
         data-bs-toggle="modal"
         data-bs-target={`#editModal-${id}`}
       >
-        Editar
+       <span className="material-symbols-outlined">
+edit
+</span>
       </button>
 
       {/* Modal */}

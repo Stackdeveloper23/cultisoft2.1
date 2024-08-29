@@ -1,7 +1,6 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import AuthUser from "../pageauth/AuthUser";
 import { useEffect } from "react";
-import InicioUsers from "../pageauth/InicioUsers";
 
 
 const LayoutLogin = () => {
@@ -16,7 +15,6 @@ const LayoutLogin = () => {
 
 return (
     <>
-    <InicioUsers/>
     <Outlet/>
     
     </>
