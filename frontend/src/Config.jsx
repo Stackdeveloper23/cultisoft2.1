@@ -62,7 +62,7 @@ export default{
 
     getProductsByIdCategory: async(categoryId)=> {
         try{
-            console.log('Category ID:', categoryId);
+           // console.log('Category ID:', categoryId);
 
             const response = await axios.get(`${base_api_url}/category/${categoryId}/products`);
         return response.data;  
@@ -84,7 +84,7 @@ export default{
     getProduct: async (id)=> {
         try{
             const response = await axios.get(`${base_api_url}/product/${id}`);
-            console.log('respuesta' , response)
+            //console.log('respuesta' , response)
             return response.data;
         }catch (error) {
             console.log('error de info de producto', error)
@@ -134,7 +134,7 @@ export default{
 
         getCartDelete: async (itemId) => {
           const token = getToken();  
-          console.log('token de usuario:', token);
+          //console.log('token de usuario:', token);
           try {
               const response = await axios.delete(`${base_api_url}/cart/remove/${itemId}`, {
                   headers: {
@@ -149,7 +149,7 @@ export default{
 
         CartQuantity: async (itemId, quantity) => {
           const token = getToken();  
-          console.log('token de usuario:', token);
+         // console.log('token de usuario:', token);
           try {
               const response = await axios.patch(`${base_api_url}/cart/items/${itemId}`, { quantity }, {
                   headers: {
@@ -158,9 +158,37 @@ export default{
               });
               return response;
           } catch (error) {
-              console.error('Error al traer productos al carrito:', error);
+              console.error('Error al cambiar la cantidad:', error);
           }
         },
+
+        postDatosEnvio: async (formData) => {
+            const token = getToken();  
+            try {
+                const response = await axios.post(`${base_api_url}/compra`, formData, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                return response;
+            } catch (error) {
+                console.error('Error al enviar datos de compra:', error);
+            }
+          },
+
+          deleteCompra: async (cartsId) => {
+            const token = getToken();  
+            try {
+                const response = await axios.delete(`${base_api_url}/compra/eliminar/${cartsId}`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                return response;
+            } catch (error) {
+                console.error('Error al eliminar la compra:', error);
+            }
+          },
 
 
     }

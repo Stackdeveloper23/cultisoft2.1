@@ -14,7 +14,7 @@ const Retiro = () => {
         <div className="d-flex flex-column ">
             <div className="w-100 d-flex justify-content-center p-5 ">
                 
-                <button className="btn btn-lg btn-primary w-50"><Link to={'/customer/compra/domicilio'}>
+                <button className="btn btn-lg btn-primary w-50"><Link className="text-decoration-none text-light" to={'/customer/compra/domicilio'}>
                 Envio a Domicilio</Link>
                 </button>
                 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('movil2');
             $table->string('referencias');
             $table->foreignId('carts_id')->constrained()->onDelete('cascade'); 
+            $table->unique('carts_id'); 
             $table->timestamps();
         });
     }
@@ -32,6 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+      
+        Schema::dropIfExists('compras');
     }
 };

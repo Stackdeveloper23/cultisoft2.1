@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from '../../assets/style/carrito.module.css';
 import { useEffect, useState } from "react";
-import MercadoPagoButton from "./MercadoPagoButton";
 import Config from "../../Config";
 
 const Cart = () => {
@@ -72,6 +71,10 @@ const Cart = () => {
 
   removeItem();
   }
+
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+  };
 
     return(
 <div className={styles.card + " mt-5 mb-5"}>
@@ -148,16 +151,18 @@ const Cart = () => {
         
 
           <div className="row" style={{borderTop: "1px solid rgb(0, 0, 0)", padding: "2vh 0"}}>
-            <div className="row">Precio Total</div>
+            <div className="row"><h4>Precio Total:</h4></div>
             <span id="total" className="h4">
-            {cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0).toFixed(2)}
+            {formatCurrency(
+    cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0)
+  )}
           
             </span>
           </div>
           <div className="row d-flex justify-content-center">
           <Link to={'/customer/compra'}> <button className="btn btn-primary w-50" type="button">
               Comprar</button></Link>
-        <MercadoPagoButton />
+      
         </div>
         </div>
 

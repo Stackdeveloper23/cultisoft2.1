@@ -43,7 +43,6 @@ public function create(Request $request)
     ]);
 
 
-    // Obtener el carrito del usuario autenticado
     $cart = Cart::where('user_id', Auth::id())->with('items.product')->first();
 
     if (!$cart) {
@@ -64,7 +63,7 @@ public function create(Request $request)
             'movil' => $validatedData['movil'],
             'movil2' => $validatedData['movil2'],
             'referencias' => $validatedData['referencias'],
-            'carts_id' => $cart->id, // Usar el ID del carrito del usuario autenticado
+            'carts_id' => $cart->id, 
         ]);
 
         DB::commit();
@@ -84,9 +83,14 @@ public function create(Request $request)
   return response()->json($data, 200);
 }
 
-public function destroy($id){
-    $data = Compra::find($id);
+public function destroy($cartsId)
+{
+    $data = Compra::where('carts_id', $cartsId)->first();
+    if (!$data) {
+        return response()->json(['message' => 'Registro no encontrado'], 404);
+    }
     $data->delete();
-    return response()->json('Delete', 200);
-  }
+
+    return response()->json(['message' => 'Eliminado exitosamente'], 200);
+}
 }

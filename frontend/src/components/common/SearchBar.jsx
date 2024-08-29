@@ -49,8 +49,8 @@ const SearchBar = () => {
     };
 
 
-    console.log('Products:', results.products);
-console.log('Categories:', results.categories);
+  //  console.log('Products:', results.products);
+//console.log('Categories:', results.categories);
 
     return (
         <div>

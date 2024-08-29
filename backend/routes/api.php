@@ -48,6 +48,7 @@ Route::prefix('v1')->group(function () {
     Route::patch('/cart/items/{itemId}', [CartController::class, 'updateQuantity']);
     Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
     Route::post('/compra', [CompraController::class, "create"]);
+    Route::delete('/compra/eliminar/{id}',[CompraController::class, "destroy"]);
     Route::get('/mercadopago/success', function () {
       return 'Pago realizado con éxito';
     })->name('mercadopago.success');
