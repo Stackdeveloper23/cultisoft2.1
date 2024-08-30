@@ -44,9 +44,9 @@ const Cardpage = () => {
                             </div>
                             <div className="col-xl-4 col-md-3">
                                 <div className="card bg-danger text-white mb-4">
-                                    <div className="card-body">Ventas</div>
+                                    <div className="card-body">Compras</div>
                                     <div className="card-footer d-flex align-items-center justify-content-between">
-                                        <a className="small text-white stretched-link" href="ventas.html">View Details</a>
+                                        <Link className="small text-white stretched-link" to={'/admin/compra'}>View Details</Link>
                                         <div className="small text-white"><i className="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

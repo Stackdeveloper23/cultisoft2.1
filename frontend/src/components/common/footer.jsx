@@ -1,3 +1,4 @@
+import Chatbot from "./Chatbot";
 
 
 const Footer = () => {
@@ -49,7 +50,13 @@ const Footer = () => {
             <button className="btn btn-primary" type="button">Subscribe</button>
           </div>
         </form>
+        <div className="row mt-5">
+        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <strong>Necesitas ayuda?</strong><br />
+          Habla con nuestro Chatbot</button>
+        <Chatbot/>
       </div>
+      </div>
+    
     </div>
 
     <div className="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">

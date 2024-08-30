@@ -44,6 +44,12 @@ const Sidervar = () => {
             Productos
           </Link>
         </li>
+        <li>
+          <Link to={"/admin/compra"} className="nav-link text-white d-flex">
+            <span className="material-symbols-outlined me-2">shopping_bag</span>
+            Compras
+          </Link>
+        </li>
       </ul>
       <hr />
 

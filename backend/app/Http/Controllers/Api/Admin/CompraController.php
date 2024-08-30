@@ -23,7 +23,7 @@ class CompraController extends Controller
     $compras = Compra::find($id);
 
     if (!$compras) {
-        return response()->json(['message' => 'procucto no encontrado'], 404);
+        return response()->json(['message' => 'compra no encontrada'], 404);
     }
 
     return response()->json($compras, 200);
@@ -93,4 +93,10 @@ public function destroy($cartsId)
 
     return response()->json(['message' => 'Eliminado exitosamente'], 200);
 }
+
+public function delete($id){
+    $data = Compra::find($id);
+    $data->delete();
+    return response()->json('Delete', 200);
+  }
 }

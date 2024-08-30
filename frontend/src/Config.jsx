@@ -11,6 +11,9 @@ const getToken =()=>{
 export default{
 
     getLogin: (data)=>axios.post(`${base_api_url}/auth/login`,data),
+    
+
+    getChatbot: (data)=>axios.post(`${base_api_url}/chatbot`,data),
 
     
     SearchBar: (query)=>axios.get(`${base_api_url}/search`,{params: { query }}),

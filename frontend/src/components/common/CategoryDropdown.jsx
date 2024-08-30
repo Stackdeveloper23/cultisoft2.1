@@ -10,7 +10,7 @@ const CategoryDropdown = () => {
     const fetchCategories = async () => {
       try {
         const response = await Config.getAllCategories();
-        console.log('categorias', response)
+        //console.log('categorias', response)
         // Asegúrate de que response.data sea un array antes de usar setCategories
         if (Array.isArray(response)) {
           setCategories(response);

@@ -10,6 +10,7 @@ import PanelAdmin from './pageadmin/PanelAdmin';
 import CategoryPage from './pageadmin/CategoryPage';
 import UserPage from './pageadmin/UserPage';
 import ProductPage from './pageadmin/ProductPage';
+import CompraPage from './pageadmin/CompraPage';
 
 const App = () => {
     return (
@@ -24,6 +25,7 @@ const App = () => {
                     <Route path='/admin/category' element={<CategoryPage/>}/>                   
                     <Route path='/admin/user' element={<UserPage/>}/>
                     <Route path='/admin/product' element={<ProductPage/>}/>
+                    <Route path="/admin/compra" element={<CompraPage/>}/>
                 </Route>
             </Routes>
         </Router>

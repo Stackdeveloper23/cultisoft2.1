@@ -11,6 +11,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\MercadoPagoController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::prefix('v1')->group(function () {
   Route::get('/category/{id}', [CategoryController::class, 'show']);
   Route::get('/category/{categoryId}/products', [CategoryController::class, 'getProductsByCategory']);
   Route::get('/search', [SearchController::class, 'search']);
-
+  Route::post('/chatbot', [ChatbotController::class, 'handleRequest']);
 
 
   //private
@@ -48,7 +49,10 @@ Route::prefix('v1')->group(function () {
     Route::patch('/cart/items/{itemId}', [CartController::class, 'updateQuantity']);
     Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
     Route::post('/compra', [CompraController::class, "create"]);
+    Route::put('/compra/actualizar/{id}', [CompraController::class, 'update']);
     Route::delete('/compra/eliminar/{id}',[CompraController::class, "destroy"]);
+    Route::get('/compra/usuario/{id}', [CompraController::class, "show"]);
+
     Route::get('/mercadopago/success', function () {
       return 'Pago realizado con éxito';
     })->name('mercadopago.success');
@@ -79,6 +83,12 @@ Route::prefix('v1')->group(function () {
       Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
       Route::put('/admin/product/edit/{id}', [AdminProductController::class, 'update']);  
       Route::delete('/admin/product/delete/{id}', [AdminProductController::class, 'destroy']); 
+
+      Route::get('/admin/compras', [CompraController::class, 'index']);
+      Route::post('/admin/compra/create', [CompraController::class, "create"]);
+      Route::put('/admin/compra/actualizar/{id}', [CompraController::class, 'update']);
+      Route::delete('/admin/compra/eliminar/{id}',[CompraController::class, "delete"]);
+      Route::get('/admin/compra/usuario/{id}', [CompraController::class, "show"]);
     });
   });
 });
