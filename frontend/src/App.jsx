@@ -10,6 +10,7 @@ import ProductDetails from './pages/ProductDetails';
 import ShoppingCart from './pages/ShoppingCart';
 import MetodoRetiro from './pages/MetodoRetiro';
 import EnvioDomicilio from './components/compra/EnvioDomicilio';
+import Soporte from './pages/Soporte';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
        <Route path='/login' element={<Login/>}/>
        <Route path='/category/:categoryId' element={<CategoryPage/>}/>
        <Route path='/product/:id' element={<ProductDetails/>}/>
+       <Route path='/soporte' element={<Soporte/>}/>
 
        <Route element={<ProtectedRoutes/>}>
 

@@ -28,7 +28,7 @@ class ChatbotController extends Controller
         $userMessage = $request->input('message');
 
         // Configura el ID de sesión y el path al archivo de credenciales
-        $sessionId = uniqid(); // Genera un ID único por usuario
+     // Genera un ID único por usuario
   
 
         // Crea el cliente de sesiones de Dialogflow
