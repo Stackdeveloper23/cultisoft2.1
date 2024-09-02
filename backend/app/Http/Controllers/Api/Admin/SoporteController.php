@@ -7,6 +7,7 @@ use App\Models\Soporte;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class SoporteController extends Controller
 {
@@ -30,24 +31,23 @@ public function create(Request $request)
 {
 
 
-$userId = Auth::id();
-
     $validatedData = $request->validate([
         'tipo_solicitud' => 'required|string',
         'nombre' => 'required|string',
         'identificacion' => 'required|string',
         'asunto' => 'required|string',
-        'description' => 'required|string',
+        'descripcion' => 'required|string',
         'movil' => 'required|string',
         'email' => 'required|string',
         'factura' => 'required|string',
-        'categoria' => 'required|string',
     ]);
 
 
 
     DB::beginTransaction();
 
+    $user = Auth::id();
+    
     try {
         // Crear el nuevo registro en la base de datos, asignando el carts_id al ID del carrito del usuario
         $newRecord = Soporte::create([
@@ -55,13 +55,11 @@ $userId = Auth::id();
             'nombre' => $validatedData['nombre'],
             'identificacion' => $validatedData['identificacion'],
             'asunto' => $validatedData['asunto'],
-            'description' => $validatedData['description'],
-            'direccion' => $validatedData['direccion'],
+            'descripcion' => $validatedData['descripcion'],
             'movil' => $validatedData['movil'],
             'email' => $validatedData['email'],
             'factura' => $validatedData['factura'],
-            'categoria' => $validatedData['categoria'],
-            'user_id' => $userId, 
+            'user_id' => $user, 
         ]);
 
         DB::commit();

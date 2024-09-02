@@ -37,18 +37,14 @@ class AdminCategoryController extends Controller
         DB::beginTransaction();
 
         try {
-            // Crear el registro en la tabla 'sows'
             $category = Category::create($validatedData);
           
-            // Confirmar la transacción
             DB::commit();
     
             return response()->json($category, 200);
         } catch (\Exception $e) {
-            // Revertir la transacción en caso de error
             DB::rollBack();
     
-            // Registrar el error en los logs
             Log::error('Error al crear el registro: ' . $e->getMessage(), [
                 'exception' => $e,
                 'request_data' => $request->all()

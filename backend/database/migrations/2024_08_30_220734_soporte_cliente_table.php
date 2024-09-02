@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('soporte', function (Blueprint $table) {
+        Schema::create('soportes', function (Blueprint $table) {
         $table->id(); 
         $table->enum('tipo_solicitud', ['queja', 'informacion', 'solicitud', 'sugerencia']); 
         $table->string('nombre');
-        $table->string("identificion"); 
+        $table->string("identificacion"); 
         $table->string('asunto', 255); 
         $table->text('descripcion'); 
         $table->text('movil'); 
         $table->text('email'); 
         $table->string('factura')->nullable();
-        $table->string('categoria', 100);
+        $table->string('categoria', 100)->nullable();
         $table->foreignId('user_id')->constrained()->onDelete('cascade');   
         $table->timestamps(); 
 
@@ -34,6 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         
-        Schema::dropIfExists('soporte');
+        Schema::dropIfExists('soportes');
     }
 };

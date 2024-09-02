@@ -1,5 +1,5 @@
-import SessionCustomer from "../components/auth/SessionCustomer";
-import UserName from "../components/auth/UserName";
+
+import Footer from "../components/common/footer";
 import Navbar from "../components/common/navbar";
 import CardAtencion from "../components/soporte/CardAtencion";
 import SoporteFormulario from "../components/soporte/SoporteFormulario";
@@ -7,10 +7,7 @@ import SoporteFormulario from "../components/soporte/SoporteFormulario";
 const Soporte = () => {
     return(
 <div>
-<Navbar>
-        <UserName />
-        <SessionCustomer/>
-        </Navbar>
+<Navbar/>
         
   <div className="container">
       <div className="row g-5 pt-5">
@@ -18,6 +15,7 @@ const Soporte = () => {
         <SoporteFormulario/>
         </div>
         </div>
+        <Footer/>
 </div>
     )
 }

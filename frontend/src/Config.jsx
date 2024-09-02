@@ -14,7 +14,8 @@ export default{
     
 
     getChatbot: (data)=>axios.post(`${base_api_url}/chatbot`,data),
-
+    
+  
     
     SearchBar: (query)=>axios.get(`${base_api_url}/search`,{params: { query }}),
     
@@ -192,6 +193,20 @@ export default{
                 console.error('Error al eliminar la compra:', error);
             }
           },
+
+          getSoporte: (formData)=> {
+            const token = getToken();
+            try{
+            return axios.post(`${base_api_url}/soporte/create`,formData,{
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            })
+        } catch (error) {
+            console.error('error al enviar el formulario', error)
+        }
+    },
+    
 
 
     }

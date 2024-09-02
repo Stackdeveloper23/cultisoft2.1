@@ -3,20 +3,17 @@ import Config from "../../Config";
 
 const SoporteFormulario = () => {
   const [formData, setFormData] = useState({
-    nombre: '',
-    apellidos: "",
-    departamento: "",
-    ciudad: "",
-    barrio: "",
-    direccion: "",
+    tipo_solicitud: "",
+    nombre: "",
+    identificacion: "",
+    asunto: "",
+    descripcion: '',
     movil: "",
-    movil2: "",
     email: "",
-    referencias: "",
+    factura: "",
+    categoria: "",
   });
-  const [submitted, setSubmitted] = useState(false);
-  
-  const [setErrors] = useState({}); 
+
 
   const Change = (e) => {
     const { name, value } = e.target;
@@ -26,23 +23,17 @@ const SoporteFormulario = () => {
   const submitCreate = async (e) => {
     e.preventDefault();
     try {
-      const response = await Config.postDatosEnvio(formData);
-      console.log(response.data);
-      setSubmitted(true);
-    const button = document.querySelector('.w-100.btn.btn-primary.btn-lg');
-    button.dataset.bsToggle = "modal";
-    button.dataset.bsTarget = "#exampleModal";
+      const response = await Config.getSoporte(formData);
+      console.log(response.data);  
+      window.location.reload();
     } catch (error) {
       if (error.response && error.response.data && error.response.data.errors) {
-        setErrors(error.response.data.errors);
+        console.log('error', error)
       } else {
         console.error("Unexpected error:", error);
       }
     }
   };
-
- 
-
 
   return (
     <div className="col-md-7 col-lg-8  order-md-last p-3">
@@ -50,7 +41,31 @@ const SoporteFormulario = () => {
       <form className="needs-validation" onSubmit={submitCreate}>
         <div className="row g-3">
           <div className="col-sm-6">
-            <label htmlFor="nombre" className="form-label">Nombres</label>
+            <label htmlFor="tipo_solicitud" className="form-label">
+              Tipo de solicitud
+            </label>
+
+            <select
+              className="form-select"
+              id="tipo_solicitud"
+              name="tipo_solicitud"
+              value={formData.tipo_solicitud}
+              onChange={Change}
+              required
+            >
+              <option value="">Selecciona una opcion</option>
+              <option value="1">queja</option>
+              <option value="2">informacion</option>
+              <option value="3">solicitud</option>
+              <option value="4">sugerencia</option>
+            </select>
+            <div className="invalid-feedback">Valid tipo de solicitud is required.</div>
+          </div>
+
+          <div className="col-sm-12">
+            <label htmlFor="nombre" className="form-label">
+              Nombres y Apellidos
+            </label>
             <input
               type="text"
               className="form-control"
@@ -66,58 +81,50 @@ const SoporteFormulario = () => {
             </div>
           </div>
 
-          <div className="col-sm-6">
-            <label htmlFor="apellidos" className="form-label">Apellidos</label>
-            <input
-              type="text"
-              className="form-control"
-              id="apellidos"
-              name="apellidos"
-              placeholder=""
-              value={formData.apellidos}
-              onChange={Change}
-              required
-            />
-            <div className="invalid-feedback">
-              Valid last name is required.
-            </div>
-          </div>
-
           <div className="col-12">
-            <label htmlFor="movil" className="form-label">Movil</label>
+            <label htmlFor="identificacion" className="form-label">
+              Numero de Identificacion
+            </label>
             <div className="input-group has-validation">
               <span className="input-group-text">#</span>
               <input
                 type="text"
                 className="form-control"
-                id="movil"
-                name="movil"
-                placeholder="Movil"
-                value={formData.movil}
+                id="identificacion"
+                name="identificacion"
+                placeholder="identificacion"
+                value={formData.identificacion}
                 onChange={Change}
                 required
               />
-              <div className="invalid-feedback">
-                Your username is required.
-              </div>
+              <div className="invalid-feedback">Your identificacion is required.</div>
             </div>
           </div>
 
           <div className="col-12">
-            <label htmlFor="movil2" className="form-label">Movil 2 <span className="text-body-secondary">(Optional)</span></label>
+            <label htmlFor="movil" className="form-label">
+              Movil<span className="text-body-secondary">(Opcional)</span>
+            </label>
             <input
               type="text"
               className="form-control"
-              id="movil2"
-              name="movil2"
-              placeholder="Movil"
-              value={formData.movil2}
+              id="movil"
+              name="movil"
+              placeholder="12346789"
+              value={formData.movil}
               onChange={Change}
+              required
             />
+            <div className="invalid-feedback">
+              Please enter your shipping address.
+            </div>
           </div>
 
+
           <div className="col-12">
-            <label htmlFor="email" className="form-label">Email <span className="text-body-secondary">(Optional)</span></label>
+            <label htmlFor="email" className="form-label">
+              Email 
+            </label>
             <input
               type="email"
               className="form-control"
@@ -132,15 +139,33 @@ const SoporteFormulario = () => {
             </div>
           </div>
 
-          <div className="col-6">
-            <label htmlFor="direccion" className="form-label">Direccion de envio</label>
+
+          <div className="col-12">
+            <label htmlFor="asunto" className="form-label">
+              Asunto
+            </label>
             <input
               type="text"
               className="form-control"
-              id="direccion"
-              name="direccion"
-              placeholder="1234 Main St"
-              value={formData.direccion}
+              id="asunto"
+              name="asunto"
+              placeholder="asunto"
+              value={formData.asunto}
+              onChange={Change}
+            />
+          </div>
+
+          <div className="col-12">
+            <label htmlFor="factura" className="form-label">
+              factura<span className="text-body-secondary">(Opcional)</span>
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="factura"
+              name="factura"
+              placeholder="12346789"
+              value={formData.factura}
               onChange={Change}
               required
             />
@@ -149,59 +174,19 @@ const SoporteFormulario = () => {
             </div>
           </div>
 
-          <div className="col-md-5">
-            <label htmlFor="departamento" className="form-label">Departamento</label>
-            <input
-              type="text"
-              className="form-control"
-              id="departamento"
-              name="departamento"
-              value={formData.departamento}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <label htmlFor="ciudad" className="form-label">Cuidad</label>
-            <input
-              type="text"
-              className="form-control"
-              id="ciudad"
-              name="ciudad"
-              value={formData.ciudad}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <label htmlFor="barrio" className="form-label">Barrio</label>
-            <input
-              type="text"
-              className="form-control"
-              id="barrio"
-              name="barrio"
-              value={formData.barrio}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
+        
+        
 
           <div className="col-12 mt-3">
-            <label htmlFor="referencias" className="form-label">Referencias Adicionales</label>
+            <label htmlFor="descripcion" className="form-label">
+             Descripcion
+            </label>
             <textarea
               className="form-control"
-              id="referencias"
-              name="referencias"
-              placeholder="Apto 301..."
-              value={formData.referencias}
+              id="descripcion"
+              name="descripcion"
+              placeholder="Descripcion detallada..."
+              value={formData.descripcion}
               onChange={Change}
               required
             />
@@ -211,25 +196,19 @@ const SoporteFormulario = () => {
           </div>
         </div>
 
-        <hr className="my-4"/>
+        <hr className="my-4" />
 
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="same-address"/>
-          <label className="form-check-label" htmlFor="same-address">Shipping address is the same as my billing address</label>
-        </div>
-
-        <div className="form-check">
-          <input type="checkbox" className="form-check-input" id="save-info"/>
-          <label className="form-check-label" htmlFor="save-info">Save this information for next time</label>
-        </div>
-
-        <hr className="my-4"/>
-      {/*  data-bs-toggle="modal" data-bs-target="#exampleModal" */}
-         <button className="w-100 btn btn-primary btn-lg" type="submit"   data-bs-toggle={submitted ? "modal" : ""}
-        data-bs-target={submitted ? "#exampleModal" : ""}>Continua con el Pago</button> 
+    
+        <hr className="my-4" />
+        <button
+          className="w-100 btn btn-primary btn-lg"
+          type="submit"
+        >
+          Enviar
+        </button>
       </form>
     </div>
   );
-}
+};
 
 export default SoporteFormulario;

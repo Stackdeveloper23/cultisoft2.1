@@ -3,9 +3,9 @@
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\Admin\AdminProductController;
 use App\Http\Controllers\Api\Admin\CompraController;
+use App\Http\Controllers\Api\Admin\SoporteController;
 use App\Http\Controllers\Api\Admin\UserController;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
@@ -41,7 +41,8 @@ Route::prefix('v1')->group(function () {
 
 
     //shopping Card
-
+    
+    Route::post('/soporte/create', [SoporteController::class, "create"]);
     Route::get('/cart', [CartController::class, 'show']);
     Route::post('/cart/add/{productId}', [CartController::class, 'add']);
     Route::delete('/cart/remove/{itemId}', [CartController::class, 'remove']);
@@ -89,6 +90,12 @@ Route::prefix('v1')->group(function () {
       Route::put('/admin/compra/actualizar/{id}', [CompraController::class, 'update']);
       Route::delete('/admin/compra/eliminar/{id}',[CompraController::class, "delete"]);
       Route::get('/admin/compra/usuario/{id}', [CompraController::class, "show"]);
+
+      Route::get('/admin/soporte', [SoporteController::class, 'index']);
+      Route::post('/admin/soporte/create', [SoporteController::class, "create"]);
+      Route::put('/admin/soporte/actualizar/{id}', [SoporteController::class, 'update']);
+      Route::delete('/admin/soporte/eliminar/{id}',[SoporteController::class, "delete"]);
+      Route::get('/admin/soporte/usuario/{id}', [SoporteController::class, "show"]);
     });
   });
 });

@@ -203,4 +203,49 @@ export default {
       },
     });
   },
+
+  getSoporte: () => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/soporte`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  deleteSoporte: (id) => {
+    const token = getToken();
+    return axios.delete(`${base_api_url}/admin/soporte/eliminar/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  createSoporte: (data) => {
+    const token = getToken();
+    return axios.post(`${base_api_url}/admin/soporte/create`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  getSoporteById: (id) => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/soporte/usuario/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  putSoporte: (data, id) => {
+    const token = getToken();
+    return axios.put(`${base_api_url}/admin/soporte/actualizar/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 };

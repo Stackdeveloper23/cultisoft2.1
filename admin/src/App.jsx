@@ -11,6 +11,7 @@ import CategoryPage from './pageadmin/CategoryPage';
 import UserPage from './pageadmin/UserPage';
 import ProductPage from './pageadmin/ProductPage';
 import CompraPage from './pageadmin/CompraPage';
+import SoportePage from './pageadmin/SoportePage';
 
 const App = () => {
     return (
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path='/admin/user' element={<UserPage/>}/>
                     <Route path='/admin/product' element={<ProductPage/>}/>
                     <Route path="/admin/compra" element={<CompraPage/>}/>
+                    <Route path='/admin/soporte' element={<SoportePage/>}/>
                 </Route>
             </Routes>
         </Router>
