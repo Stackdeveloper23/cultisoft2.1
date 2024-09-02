@@ -37,7 +37,8 @@ const CategoryPage = () => {
 
   return (
     <div>
-        <Navbar/>
+       <Navbar/>
+        
         <div className="container">
       <h1 className='d-flex justify-content-center mt-4'>Category {categoryName}</h1>
       <div className='card-container d-flex flex-wrap justify-content-center'>

@@ -1,5 +1,5 @@
 
-import CompraTable from "../components/CompraTable";
+import CompraTable from "../components/compra/CompraTable";
 import Navbar from "../components/Navbar";
 import Sidervar from "../components/Sidevar";
 

@@ -1,55 +1,53 @@
 import { useEffect, useState } from "react";
-import Config from "../Config";
+import Config from "../../Config";
 
-const CompraEdit = ({ id }) => {
-  const [compra, setCompra] = useState({
-    nombre: '',
-    apellidos: '',
-    ciudad: '',
-    barrio: '',
-    direccion: '',
-    movil: '',
-    movil2: '',
-    referencia: '',
+const ProductEdit = ({ id }) => {
+  const [product, setProduct] = useState({
+    name: '',
+    status: '',
+    description: '',
+    price: '',
+    image_path: '',
+    quantity:'',
+    category_id:'',
   });
+
   useEffect(() => {
-    const fetchCompra = async () => {
+    const fetchUser = async () => {
       try {
-        const response = await Config.getComprasById(id);
-        setCompra({
-            nombre: response.data.nombre,
-            apellidos: response.data.apellidos,
-            ciudad: response.data.ciudad,
-            barrio: response.data.barrio,
-            direccion: response.data.direccion,
-            movil: response.data.movil,
-            movil2: response.data.movil2,
-            referencia: response.data.referencia,
+        const response = await Config.getProductsById(id);
+        setProduct({
+          name: response.data.name,
+          status: response.data.status,          
+          description: response.data.description,
+          price: response.data.price,
+          image_path: response.data.image_path,
+          quantity: response.data.quantity,
+          category_id: response.data.category_id,
         });
       } catch (error) {
-        console.error("Error fetching compras:", error);
-
+        console.error("Error fetching products:", error);
       }
     };
 
-    if (id) fetchCompra(); 
+    if (id) fetchUser();
   }, [id]);
 
   const handleInputChange = (e) => {
-    const { nombre, value } = e.target;
-    setCompra({
-      ...compra,
-      [nombre]: value,
+    const { name, value } = e.target;
+    setProduct({
+      ...product,
+      [name]: value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await Config.putCompras(compra, id);
+      await Config.putProducts(product, id);
       window.location.reload();
     } catch (error) {
-      console.error("Error updating compra:", error);
+      console.error("Error updating products:", error);
     }
   };
 
@@ -82,7 +80,7 @@ edit
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id={`editModalLabel-${id}`}>
-                Editar Compra
+                Editar Usuario
               </h1>
               <button
                 type="button"
@@ -103,112 +101,85 @@ edit
                       className="form-control"
                       id="name"
                       name="name"
-                      value={compra.nombre}
+                      value={product.name}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="apellidos" className="form-label">
-                      Apellido
+                    <label htmlFor="status" className="form-label">
+                      Estado
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="apellidos"
-                      name="apellidos"
-                      value={compra.apellidos}
+                      id="status"
+                      name="status"
+                      value={product.status}
                       onChange={handleInputChange}
                       required
                     />
-                  </div> <div className="mb-3">
-                    <label htmlFor="departamento" className="form-label">
-                    departamento
+                  </div>  
+                  <div className="mb-3">
+                    <label htmlFor="description" className="form-label">
+                      Description
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="departamento"
-                      name="departamento"
-                      value={compra.departamento}
+                      id="description"
+                      name="description"
+                      value={product.description}
                       onChange={handleInputChange}
                       required
                     />
-                  </div> <div className="mb-3">
-                    <label htmlFor="ciudad" className="form-label">
-                    ciudad
+                  </div>  
+                  <div className="mb-3">
+                    <label htmlFor="price" className="form-label">
+                      Estado
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="ciudad"
-                      name="ciudad"
-                      value={compra.ciudad}
+                      id="price"
+                      name="price"
+                      value={product.price}
                       onChange={handleInputChange}
                       required
                     />
-                  </div> <div className="mb-3">
-                    <label htmlFor="barrio" className="form-label">
-                    barrio
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="imagen" className="form-label">
+                      Imagen
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="barrio"
-                      name="barrio"
-                      value={compra.barrio}
+                      id="imagen"
+                      name="imagen"
+                      value={product.image_path}
                       onChange={handleInputChange}
                       required
                     />
-                  </div> <div className="mb-3">
-                    <label htmlFor="direccion" className="form-label">
-                    direccion
+                  </div>
+                   <div className="mb-3">
+                    <label htmlFor="quantity" className="form-label">
+                      Estado
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="direccion"
-                      name="direccion"
-                      value={compra.direccion}
+                      id="quantity"
+                      name="quantity"
+                      value={product.quantity}
                       onChange={handleInputChange}
                       required
                     />
-                  </div> <div className="mb-3">
-                    <label htmlFor="movil" className="form-label">
-                    movil
+                  </div>
+                  <div className="mb-3">
+                    <label htmlFor="category_id" className="form-label">
+                      Estado
                     </label>
                     <input
-                    type="text"
                       className="form-control"
-                      id="movil"
-                      name="movil"
-                      value={compra.movil}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div> <div className="mb-3">
-                    <label htmlFor="movil2" className="form-label">
-                    movil2
-                    </label>
-                    <input
-                    type="text"
-                      className="form-control"
-                      id="movil2"
-                      name="movil2"
-                      value={compra.movil2}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div> <div className="mb-3">
-                    <label htmlFor="referecia" className="form-label">
-                    referecia
-                    </label>
-                    <input
-                    type="text"
-                      className="form-control"
-                      id="referecia"
-                      name="referecia"
-                      value={compra.referencia}
+                      id="category_id"
+                      name="category_id"
+                      value={product.category_id}
                       onChange={handleInputChange}
                       required
                     />
@@ -237,4 +208,4 @@ edit
   );
 };
 
-export default CompraEdit;
+export default ProductEdit;

@@ -58,11 +58,6 @@ const Navbar = () => {
         <ul className="dropdown-menu show" style={{ top: '50px', right: '0', left: 'auto' }}>
           <li>
             <a className="dropdown-item" href="#">
-              New project...
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
               Settings
             </a>
           </li>

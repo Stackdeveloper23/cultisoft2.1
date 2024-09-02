@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Config from "../Config";
+import Config from "../../Config";
 import CompraCreate from "./CompraCreate";
 import CompraEdit from "./CompraEdit";
 

@@ -1,9 +1,9 @@
 import Cardpage from "../components/CardPage"
-import Grafico from "../components/Grafico"
 import Navbar from "../components/Navbar"
 import Sidervar from "../components/Sidevar"
-import TrafficGrafic from "../components/TrafficGrafic"
-import GraficCards from "../components/GraficCards"
+import GraficCards from "../components/graficos/GraficCards"
+import Grafico from "../components/graficos/Grafico"
+import TrafficGrafic from "../components/graficos/TrafficGrafic"
 
 
 const PanelAdmin = () => {
@@ -30,7 +30,7 @@ const PanelAdmin = () => {
                         <div className="col-sm-12">
                             <h1 className="text-center">Admin</h1>
                             <Cardpage />
-                            <GraficCards/>
+                            <GraficCards />
                             <TrafficGrafic/>
                             <Grafico/>
                         </div>

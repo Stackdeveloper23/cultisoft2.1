@@ -1,6 +1,6 @@
 
 import { Container, Row, Col } from 'react-bootstrap';
-import StatCard from './StatCard';
+import StatCard from '../StatCard';
 
 function GraficCards() {
   const commonOptions = {

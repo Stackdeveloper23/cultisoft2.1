@@ -1,5 +1,5 @@
 
-import CategoryTable from "../components/CategoryTable";
+import CategoryTable from "../components/categoria/CategoryTable";
 import Navbar from "../components/Navbar";
 import Sidervar from "../components/Sidevar";
 

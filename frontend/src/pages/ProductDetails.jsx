@@ -3,8 +3,6 @@ import Config from "../Config";
 import { useParams } from "react-router-dom";
 import Navbar from "../components/common/navbar";
 import Footer from "../components/common/footer";
-import UserName from "../components/auth/UserName";
-import SessionCustomer from "../components/auth/SessionCustomer";
 
 
 const ProductDetails = () => {
@@ -42,10 +40,7 @@ const ProductDetails = () => {
 
     return (
         <div style={{backgroundColor: "rgba(156, 149, 149, 0.267)"}}>
-       <Navbar>
-        <UserName />
-        <SessionCustomer/>
-        </Navbar>
+       <Navbar/>
         <div className="container mt-5 mb-5">
             <div className="row">
         <div className="col-sm-6 order-md-1">

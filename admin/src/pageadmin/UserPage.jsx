@@ -1,7 +1,7 @@
 
 import Navbar from "../components/Navbar";
 import Sidervar from "../components/Sidevar";
-import UserTable from "../components/UserTable";
+import UserTable from "../components/usuario/UserTable";
 
 
 const UserPage = () => {

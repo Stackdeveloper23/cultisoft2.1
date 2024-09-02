@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import ProductTable from "../components/ProductTable";
+import ProductTable from "../components/producto/ProductTable";
 import Sidervar from "../components/Sidevar";
 
 
@@ -28,7 +28,7 @@ const ProductPage = () => {
                     <div className="row justify-content-center mt-5 mb-5">
                         <div className="col-sm-12">
                             <h1 className="text-center">Admin</h1>
-                            <ProductTable />
+                            <ProductTable  />
                         </div>
                     </div>
                 </div>

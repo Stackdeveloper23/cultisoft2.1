@@ -1,32 +1,32 @@
 import { useEffect, useState } from "react";
-import Config from "../Config";
+import Config from "../../Config";
 
-const CategoryEdit = ({ id }) => {
-  const [category, setCategory] = useState({
+const UserEdit = ({ id }) => {
+  const [user, setUser] = useState({
     name: '',
-    description: '',
+    email: '',
   });
+
   useEffect(() => {
-    const fetchCategory = async () => {
+    const fetchUser = async () => {
       try {
-        const response = await Config.getCategoryById(id);
-        setCategory({
+        const response = await Config.getUserById(id);
+        setUser({
           name: response.data.name,
-          description: response.data.description,
+          email: response.data.email,
         });
       } catch (error) {
-        console.error("Error fetching category:", error);
-
+        console.error("Error fetching users:", error);
       }
     };
 
-    if (id) fetchCategory(); // Solo cargar datos si el id existe
+    if (id) fetchUser();
   }, [id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setCategory({
-      ...category,
+    setUser({
+      ...user,
       [name]: value,
     });
   };
@@ -34,7 +34,7 @@ const CategoryEdit = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await Config.putCategories(category, id);
+      await Config.putUsers(user, id);
       window.location.reload();
     } catch (error) {
       console.error("Error updating category:", error);
@@ -51,7 +51,7 @@ const CategoryEdit = ({ id }) => {
         data-bs-toggle="modal"
         data-bs-target={`#editModal-${id}`}
       >
-       <span className="material-symbols-outlined">
+        <span className="material-symbols-outlined">
 edit
 </span>
       </button>
@@ -70,7 +70,7 @@ edit
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id={`editModalLabel-${id}`}>
-                Editar Categoría
+                Editar Usuario
               </h1>
               <button
                 type="button"
@@ -91,20 +91,20 @@ edit
                       className="form-control"
                       id="name"
                       name="name"
-                      value={category.name}
+                      value={user.name}
                       onChange={handleInputChange}
                       required
                     />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="description" className="form-label">
-                      Descripción
+                      Email
                     </label>
-                    <textarea
+                    <input
                       className="form-control"
-                      id="description"
-                      name="description"
-                      value={category.description}
+                      id="email"
+                      name="email"
+                      value={user.email}
                       onChange={handleInputChange}
                       required
                     />
@@ -133,4 +133,4 @@ edit
   );
 };
 
-export default CategoryEdit;
+export default UserEdit;

@@ -1,36 +1,40 @@
 import { useState } from "react";
+import Config from "../../Config";
 import { useParams } from "react-router-dom";
-import Config from "../Config";
 
-
-const ProductCreate = () => {
+const CompraCreate = () => {
     
     const { id } = useParams();
-    const [name, setName] = useState();
-    const [status, setStatus] = useState();
-    const [description, setDescription] = useState(); 
-    const [price, setPrice] = useState(); 
-    const [image_path, setImage_path] = useState(); 
-    const [quantity, setQuantity] = useState();
-    const [category_id, setCategory_id] = useState();
+    const [nombre, setNombre] = useState();
+    const [apellidos, setApellidos] = useState(); 
+    const [departamento, setDepartamento] = useState();
+    const [ciudad, setCiudad] = useState();
+    const [barrio, setBarrio] = useState();
+    const [direccion, setDireccion] = useState();
+    const [movil, setMovil] = useState();
+    const [movil2, setMovil2] = useState();
+    const [referencia, setReferencia] = useState();
+
     
         const create = async (ev) => {
             ev.preventDefault();
             try{
                 const data ={
-                    name,
-                    status,
-                    description,
-                    price,
-                    image_path,
-                    quantity,
-                    category_id,
+                    nombre,
+                    apellidos,
+                    departamento,
+                    ciudad,
+                    barrio,
+                    direccion,
+                    movil,
+                    movil2,
+                    referencia,
                 };
-                await Config.createProducts(data, id);
+                await Config.createCompra(data, id);
                 window.location.reload();
                 
             } catch (error) {
-                console.log("error al crear el producto", error);
+                console.log("error al crear la compra", error);
             }
         }
 
@@ -62,7 +66,7 @@ const ProductCreate = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                    Crear Producto
+                    Crear Compra
                   </h1>
                   <button
                     type="button"
@@ -75,21 +79,25 @@ const ProductCreate = () => {
                 <div className="modal-body ">
                     <form onSubmit={create} className='d-flex flex-column'>
                    <label htmlFor="">Nombre:</label>
-                    <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                    <label htmlFor="">Estado:</label>
-                    <input type="text" value={status} onChange={(e) => setStatus(e.target.value)}/>
-                    <label htmlFor="">Descripcion:</label>
-                    <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                    <label htmlFor="">Precio:</label>
-                    <input type="text" value={price} onChange={(e) => setPrice(e.target.value)}/>
-                    <label htmlFor="">Imagen:</label>
-                    <input type="text" value={image_path} onChange={(e) => setImage_path(e.target.value)}/>
-                    <label htmlFor="">Cantidad:</label>
-                    <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
-                    <label htmlFor="">Categoria:</label>
-                    <input type="text" value={category_id} onChange={(e) => setCategory_id(e.target.value)}/>
-                    
+                    <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+                    <label htmlFor="">apellidos:</label>
+                    <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)}/> 
+                    <label htmlFor="">departamento:</label>
+                    <input type="text" value={departamento} onChange={(e) => setDepartamento(e.target.value)}/>
+                   <label htmlFor="">ciudad:</label>
+                    <input type="text" value={ciudad} onChange={(e) => setCiudad(e.target.value)}/>
+                   <label htmlFor="">barrio:</label>
+                    <input type="text" value={barrio} onChange={(e) => setBarrio(e.target.value)}/>
+                   <label htmlFor="">direccion:</label>
+                    <input type="text" value={direccion} onChange={(e) => setDireccion(e.target.value)}/>
+                   <label htmlFor="">movil:</label>
+                    <input type="text" value={movil} onChange={(e) => setMovil(e.target.value)}/>
+                   <label htmlFor="">movil2:</label>
+                    <input type="text" value={movil2} onChange={(e) => setMovil2(e.target.value)}/>
+                   <label htmlFor="">referencia:</label>
+                    <input type="text" value={referencia} onChange={(e) => setReferencia(e.target.value)}/>
                    <div className="d-flex justify-content-center">
+                  
                     <button type="submit" className="btn btn-primary w-50">
                     Enviar
                   </button>
@@ -116,4 +124,4 @@ const ProductCreate = () => {
         </>
     )
 }
-export default ProductCreate;
+export default CompraCreate;

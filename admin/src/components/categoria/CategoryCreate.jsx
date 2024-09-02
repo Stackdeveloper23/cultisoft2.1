@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Config from "../Config";
+import Config from "../../Config";
 import { useParams } from "react-router-dom";
 
 const CategoryCreate = () => {
