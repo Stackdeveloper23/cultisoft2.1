@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import Config from "../../Config";
 
 
@@ -13,6 +13,8 @@ const ProductCreate = () => {
     const [image_path, setImage_path] = useState(); 
     const [quantity, setQuantity] = useState();
     const [category_id, setCategory_id] = useState();
+    
+  const [categories, setCategories] = useState([]);
     
         const create = async (ev) => {
             ev.preventDefault();
@@ -34,7 +36,20 @@ const ProductCreate = () => {
             }
         }
 
-    
+        useEffect(() => {
+          const fetchCategories = async () => {
+            try {
+              const response = await Config.getCategories();
+              console.log('categorias', response.data)
+              setCategories(response.data);
+            } catch (error) {
+              console.error('Error fetching categories:', error);
+              setCategories([]);
+                 }
+          };
+      
+          fetchCategories();
+        }, []);
 
     return(
             <>
@@ -86,9 +101,30 @@ const ProductCreate = () => {
                     <input type="text" value={image_path} onChange={(e) => setImage_path(e.target.value)}/>
                     <label htmlFor="">Cantidad:</label>
                     <input type="text" value={quantity} onChange={(e) => setQuantity(e.target.value)}/>
-                    <label htmlFor="">Categoria:</label>
-                    <input type="text" value={category_id} onChange={(e) => setCategory_id(e.target.value)}/>
-                    
+                 <div className="form-group">
+      <label htmlFor="categorySelect">Selecciona una categoria</label>
+      <select
+        id="categorySelect"
+        className="form-control"
+        value={category_id}
+        onChange={(e) => setCategory_id(e.target.value)}
+      >
+        <option value="0">
+          Choose a category
+        </option>
+        {categories.length > 0 ? (
+          categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))
+        ) : (
+          <option value="" disabled>
+            No categories available
+          </option>
+        )}
+      </select>
+    </div>
                    <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-primary w-50">
                     Enviar

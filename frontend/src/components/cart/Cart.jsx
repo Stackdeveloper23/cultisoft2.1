@@ -92,14 +92,14 @@ const Cart = () => {
 
 
         <div className="table-responsive">
-          <table className="table">
+          <table className="table align-middle">
             <thead>
               <tr>
                 <th>Producto</th>
                 <th>Cantidad</th>
                 <th>Precio/UND</th>
                 <th>subtotal</th>
-                <th>Subtotal</th>
+                <th></th>
                 <th></th>
               </tr>
             </thead>
@@ -111,12 +111,10 @@ const Cart = () => {
                     <td>
                       <input 
                         type="number" 
-                        min="1" 
-                        max="10" 
-                        step="1" 
-                        size="1" 
+                       
                         value={item.quantity} 
                         onChange={(e) => handleQuantityChange(item.id, e.target.value)}
+                      style={{width: "3rem"}}
                       />
                     </td>
                     <td>{item.product.price}</td>

@@ -146,13 +146,13 @@ edit
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="imagen" className="form-label">
+                    <label htmlFor="image_path" className="form-label">
                       Imagen
                     </label>
                     <input
                       className="form-control"
-                      id="imagen"
-                      name="imagen"
+                      id="image_path"
+                      name="image_path"
                       value={product.image_path}
                       onChange={handleInputChange}
                       required

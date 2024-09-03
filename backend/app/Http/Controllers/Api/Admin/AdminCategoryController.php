@@ -31,9 +31,10 @@ class AdminCategoryController extends Controller
     { 
         $validatedData = $request->validate([
           'name' => 'required|string',
-          'description' => 'required|string'
+          'description' => 'required|string',
+          'imagen' => 'required|string',
         ]);
-
+Log::info('datos enviado', $validatedData);
         DB::beginTransaction();
 
         try {

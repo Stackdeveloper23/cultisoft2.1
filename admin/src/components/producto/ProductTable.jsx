@@ -44,7 +44,7 @@ const ProductTable = () => {
   return (
     <>
       <h1 className="w-100 d-flex justify-content-center">Product Table</h1>
-      <div className="container">
+      <div className="">
         <div>
           <ProductCreate/>
         </div>

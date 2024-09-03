@@ -6,21 +6,18 @@ const CategoryDropdown = () => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    // Función para obtener las categorías
     const fetchCategories = async () => {
       try {
         const response = await Config.getAllCategories();
-        //console.log('categorias', response)
-        // Asegúrate de que response.data sea un array antes de usar setCategories
         if (Array.isArray(response)) {
           setCategories(response);
         } else {
           console.error('Unexpected response data format:', response);
-          setCategories([]); // Inicializa como array vacío si el formato es incorrecto
+          setCategories([]); 
         }
       } catch (error) {
         console.error('Error fetching categories:', error);
-        setCategories([]); // Inicializa como array vacío en caso de error
+        setCategories([]); 
       }
     };
 
@@ -30,9 +27,10 @@ const CategoryDropdown = () => {
   return (
     <div>
       <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <i className="fas fa-user fa-fw"></i>
+        <i className="fas fa-user fa-fw">Categorias</i>
       </a>
       <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+        
         {categories.length > 0 ? (
           categories.map((category) => (
             <li key={category.id}>
@@ -40,8 +38,8 @@ const CategoryDropdown = () => {
             </li>
           ))
         ) : (
-          <li>No categories available</li> // Mensaje en caso de no haber categorías
-        )}
+          <li>No categories available</li> 
+              )}
         
       </ul>
     </div>

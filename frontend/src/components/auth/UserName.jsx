@@ -18,7 +18,7 @@ const UserName = () => {
   return (
     <div>
       {user ? (
-        <button className='btn btn-success'>Welcome, {user.name}!</button>
+        <button className='btn btn-success'>Bienvenido, {user.name}!</button>
      
     ) : (
         <p>Loading...</p>

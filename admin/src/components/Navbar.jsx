@@ -28,7 +28,7 @@ const Navbar = () => {
         };
       
     return(
-        <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark border-bottom border-secondary" style={{height: "70px"}}>
+        <nav className="navbar  navbar-dark bg-dark border-bottom border-secondary" style={{height: "70px"}}>
            
             <button className="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i className="fas fa-bars"></i></button>
            
@@ -39,7 +39,7 @@ const Navbar = () => {
           <ButtonTheme/>
                 </div>
             </form>
-            <div className="nav-item dropdown">
+            <div className="nav-item dropdown me-3">
       <a
         className="nav-link dropdown-toggle" 
         href="#" 

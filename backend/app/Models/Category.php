@@ -12,6 +12,7 @@ class Category extends Model
     protected $fillable = [
         'name',
         'description',
+        'imagen',
     ]; 
     // Campos fillable según tu estructura
 

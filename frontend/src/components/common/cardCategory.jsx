@@ -1,20 +1,29 @@
+import { Link } from "react-router-dom"
 import rose from "../../assets/img/RoseCard.jpg"
 
 const CardCategory = ({ category }) =>{
     return (
-      
-  <div className="card mb-3 me-3 col-sm-5">
-  <div className="row g-0">
-    <div className="col-md-4">
-      <img src={rose} className="img-fluid rounded-start" alt="..."/>
-    </div>
-    <div className="col-md-8">
-      <div className="card-body">
-        <h5 className="card-title">{category.name}</h5>
-        <p className="card-text">{category.description}</p>
-      </div>
-    </div>
+ 
+<div className="container">
+<hr className="featurette-divider"/>
+
+<div className="row featurette">
+  <div className="col-md-7">
+    <h2 className="featurette-heading fw-normal lh-1">{category.name}</h2>
+    <p className="lead">{category.description}</p>
+    <Link to={`/category/${category.id}`}><button className="btn btn-primary">Ver Detalles</button></Link>
   </div>
+  <div className="col-md-5">
+  <img 
+    src={rose} 
+    alt="Descripción de la imagen" 
+    className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+    width="250" 
+    height="300" 
+    style={{ objectFit: 'cover' }} 
+  />
+  </div>
+</div>
 </div>
     )
 }

@@ -5,14 +5,17 @@ const CategoryEdit = ({ id }) => {
   const [category, setCategory] = useState({
     name: '',
     description: '',
+    imagen: '',
   });
   useEffect(() => {
     const fetchCategory = async () => {
       try {
         const response = await Config.getCategoryById(id);
+        console.log('respuesto categoria', response.data)
         setCategory({
           name: response.data.name,
           description: response.data.description,
+          imagen: response.data.imagen,
         });
       } catch (error) {
         console.error("Error fetching category:", error);
@@ -109,6 +112,21 @@ edit
                       required
                     />
                   </div>
+
+                  <div className="mb-3">
+                    <label htmlFor="imagen" className="form-label">
+                    imagen
+                    </label>
+                    <textarea
+                      className="form-control"
+                      id="imagen"
+                      name="imagen"
+                      value={category.imagen}
+                      onChange={handleInputChange}
+                      required
+                    />
+                  </div>
+
                   <div className="d-flex justify-content-center">
                   <button type="submit" className="btn btn-primary">
                     Actualizar

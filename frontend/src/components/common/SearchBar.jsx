@@ -54,16 +54,21 @@ const SearchBar = () => {
 
     return (
         <div>
-            <form className="d-flex" onSubmit={handleSearch}>
-                <input
-                    className="form-control me-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-                    value={query}
-                    onChange={(e) => setQuery(e.target.value)}
-                />
-                <button className="btn btn-outline-warning" type="submit">Search</button>
+            <form className="d-flex" style={{width: "30rem"}} onSubmit={handleSearch}>
+            <div className="input-group">
+      
+           
+  <input
+    className="form-control"
+    type="search"
+    placeholder="Search"
+    aria-label="Search"
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+  /> <span className="input-group-text">
+  <i className="material-symbols-outlined">search</i>
+</span>
+    </div>
             </form>
             {loading && <div>Loading...</div>}
             {query.length > 0 && (

@@ -7,6 +7,7 @@ const CategoryCreate = () => {
     const { id } = useParams();
     const [name, setName] = useState();
     const [description, setDescription] = useState(); 
+    const [imagen, setImagen] = useState(); 
 
     
         const create = async (ev) => {
@@ -15,6 +16,7 @@ const CategoryCreate = () => {
                 const data ={
                     name,
                     description,
+                    imagen,
                 };
                 await Config.createCategories(data, id);
                 window.location.reload();
@@ -68,6 +70,9 @@ const CategoryCreate = () => {
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                     <label htmlFor="">Descripcion:</label>
                     <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <label htmlFor="">Imgen:</label>
+                    <input type="text" value={imagen} onChange={(e) => setImagen(e.target.value)}/>
+              
                    <div className="d-flex justify-content-center">
                     <button type="submit" className="btn btn-primary w-50">
                     Enviar
