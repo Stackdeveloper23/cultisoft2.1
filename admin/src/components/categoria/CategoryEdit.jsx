@@ -11,7 +11,7 @@ const CategoryEdit = ({ id }) => {
     const fetchCategory = async () => {
       try {
         const response = await Config.getCategoryById(id);
-        console.log('respuesto categoria', response.data)
+        //console.log('respuesto categoria', response.data)
         setCategory({
           name: response.data.name,
           description: response.data.description,

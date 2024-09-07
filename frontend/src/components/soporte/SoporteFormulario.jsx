@@ -195,17 +195,15 @@ const SoporteFormulario = () => {
             </div>
           </div>
         </div>
-
         <hr className="my-4" />
-
-    
-        <hr className="my-4" />
+        <div className="d-flex justify-content-center">
         <button
-          className="w-100 btn btn-primary btn-lg"
+          className="btn btn-primary btn-lg w-50"
           type="submit"
         >
           Enviar
         </button>
+        </div>
       </form>
     </div>
   );

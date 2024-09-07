@@ -25,7 +25,7 @@ const CategoryDropdown = () => {
   }, []);
 
   return (
-    <div>
+    <div className="dropdown-container">
       <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
         <i className="fas fa-user fa-fw">Categorias</i>
       </a>
@@ -42,6 +42,9 @@ const CategoryDropdown = () => {
               )}
         
       </ul>
+
+
+  <div className="dropdown-overlay"></div>
     </div>
   );
 };

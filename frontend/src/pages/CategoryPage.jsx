@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Config from '../Config';
 import Navbar from "../components/common/navbar";
 import CardProduct from '../components/common/cardProduct';
+import Footer from '../components/common/footer';
 
 
 const CategoryPage = () => {
@@ -40,13 +41,20 @@ const CategoryPage = () => {
        <Navbar/>
         
         <div className="container">
+        <Link to={-1} >
+            <button className="btn btn-primary mt-3">
+              <span className="material-symbols-outlined">arrow_back</span>Atras
+            </button>
+          </Link>
       <h1 className='d-flex justify-content-center mt-4'>Category {categoryName}</h1>
       <div className='card-container d-flex flex-wrap justify-content-center'>
+      
         {products.map((product) => (
           <CardProduct key={product.id} product={product} />
         ))}
       </div>
       </div>
+      <Footer/>
     </div>
   );
 };

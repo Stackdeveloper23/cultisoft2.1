@@ -46,7 +46,7 @@ const SessionCustomer = () => {
         <ul className="dropdown-menu show" style={{ top: '50px', right: '0', left: 'auto' }}>
           <li>
             <a className="dropdown-item" href="#">
-              New project...
+             configuracion
             </a>
           </li>
           <li>
@@ -63,7 +63,8 @@ const SessionCustomer = () => {
             <hr className="dropdown-divider" />
           </li>
           <li>
-            <a className="dropdown-item" onClick={logoutUser}>
+            <a className="dropdown-item" onClick={logoutUser} 
+    style={{ cursor: 'pointer' }} >
               Sign out
             </a>
           </li>

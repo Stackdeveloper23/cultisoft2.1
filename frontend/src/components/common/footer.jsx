@@ -44,7 +44,7 @@ const Footer = () => {
       <div className="col-md-5 offset-md-1 mb-3">
         <div className="row mt-5">
           
-    <p className="float-end"><a href="#">Back to top</a></p>
+    <p className="float-end d-flex justify-content-end"><a href="#">Back to top</a></p>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> <strong>Necesitas ayuda?</strong><br />
           Habla con nuestro Chatbot</button>
         <Chatbot/>

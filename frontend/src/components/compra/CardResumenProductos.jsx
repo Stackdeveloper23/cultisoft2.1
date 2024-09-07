@@ -5,14 +5,13 @@ const CardResumenProductos = () => {
   
   const [cartItems, setCartItems] = useState([]);
 
-  // Función para obtener los productos del carrito cuando el componente se monta
   useEffect(() => {
     const fetchCartProducts = async () => {
       try {
-        const response = await Config.getCartProducts(); // Llama a la función para obtener los productos
+        const response = await Config.getCartProducts(); 
         if (response && response.data) {
-          console.log('Productos del carrito:', response.data.items); // Verifica los datos recibidos
-          setCartItems(response.data.items); // Almacena los productos en el estado
+          console.log('Productos del carrito:', response.data.items); 
+          setCartItems(response.data.items); 
         }
       } catch (error) {
         console.error('Error al traer productos al carrito:', error);
