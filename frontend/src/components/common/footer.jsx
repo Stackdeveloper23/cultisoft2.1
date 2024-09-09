@@ -1,43 +1,70 @@
 import { Link } from "react-router-dom";
 import Chatbot from "./Chatbot";
+import { useEffect, useState } from "react";
+import Config from "../../Config";
 
 
 const Footer = () => {
+  const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
+
+    
+    useEffect(() => {
+        const getProducts = async (page) => {
+            try {
+                const response = await Config.getCategories(page);
+                setCategories(response.data);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+        };
+
+        getProducts();
+    }, []);
+
+    useEffect(() => {
+      const getProducts = async (page) => {
+          try {
+              const response = await Config.getProducts(page);
+              setProducts(response.data);
+          } catch (error) {
+              console.error('Error fetching products:', error);
+          }
+      };
+
+      getProducts();
+  }, []);
     return(
 
         <div id="footer">
   <footer className="container py-5">
     <div className="row">
       <div className="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Categorias</h5>
         <ul className="nav flex-column">
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Home</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
-        </ul>
+  {categories.map((category, index) => (
+    <li key={index}>
+      <Link to={`/category/${category.id}`} className="custom-link">{category.name}</Link>
+    </li>
+  ))}
+</ul>
       </div>
 
       <div className="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Productos</h5>
         <ul className="nav flex-column">
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Home</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
-        </ul>
+  {products.map((product, index) => (
+    <li key={index}>
+      <Link to={`/product/${product.id}`} className="custom-link">{product.name}</Link></li>
+  ))}
+</ul>
       </div>
 
       <div className="col-6 col-md-2 mb-3">
-        <h5>Section</h5>
+        <h5>Paginas</h5>
         <ul className="nav flex-column">
-          <li className="nav-item mb-2"><Link to={'/soporte'} className="nav-link p-0 text-body-secondary"><button className="btn btn-success">Soporte al Cliente</button></Link></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Features</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">Pricing</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">FAQs</a></li>
-          <li className="nav-item mb-2"><a href="#" className="nav-link p-0 text-body-secondary">About</a></li>
+          <li className="nav-item mb-2"><Link to={'/soporte'} className="nav-link p-0 text-body-secondary">Soporte al Cliente</Link></li>
+          <li className="nav-item mb-2"><Link to={'/customer/cart'} className="nav-link p-0 text-body-secondary">Carrito</Link></li>
         </ul>
       </div>
 

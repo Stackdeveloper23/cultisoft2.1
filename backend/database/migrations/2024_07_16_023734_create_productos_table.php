@@ -18,7 +18,6 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 10, 2);
             $table->text('image_path');
-            $table->integer('quantity');
             $table->unsignedBigInteger('category_id'); // Ensure the column is added
             $table->timestamps();
   });

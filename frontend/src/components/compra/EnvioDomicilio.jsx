@@ -2,6 +2,7 @@
 
 import SessionCustomer from "../auth/SessionCustomer";
 import UserName from "../auth/UserName";
+import Footer from "../common/footer";
 import Navbar from "../common/navbar";
 import CardResumenProductos from "./CardResumenProductos";
 import Formulario from "./Formulario";
@@ -23,6 +24,8 @@ const EnvioDomicilio = () => {
         <Formulario/>
         </div>
         </div>
+        
+        <Footer/>
       </>
     )
 }

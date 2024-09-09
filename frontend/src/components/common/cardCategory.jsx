@@ -15,8 +15,8 @@ const CardCategory = ({ category }) =>{
   </div>
   <div className="col-md-5">
   <img 
-    src={rose} 
-    alt="Descripción de la imagen" 
+    src={category.imagen}
+    alt={category.name} 
     className="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
     width="250" 
     height="300" 

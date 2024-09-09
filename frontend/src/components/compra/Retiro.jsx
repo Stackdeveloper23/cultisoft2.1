@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Retiro = () => {
     return(
-        <div className="d-flex justify-content-center" style={{ backgroundColor: " #98FB98", height: "89vh", padding:"100px" }}>
+        <div className="d-flex justify-content-center" style={{ backgroundColor: " #98FB98", padding:"100px" }}>
 
 <div className="row ">
   <div className="card-dialog" role="document">

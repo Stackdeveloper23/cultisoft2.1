@@ -182,4 +182,11 @@
   position: relative; 
 }
 
+.custom-link {
+  text-decoration: none; 
+  color: inherit; 
+}
+.custom-link:hover {
+  color: #555;
+}
   

@@ -225,7 +225,7 @@ const Formulario = () => {
 
         <hr className="my-4"/>
       {/*  data-bs-toggle="modal" data-bs-target="#exampleModal" */}
-         <button className="w-100 btn btn-primary btn-lg" type="submit"   data-bs-toggle={submitted ? "modal" : ""}
+         <button className="w-100 btn btn-primary btn-lg mb-5" type="submit"   data-bs-toggle={submitted ? "modal" : ""}
         data-bs-target={submitted ? "#exampleModal" : ""}>Continua con el Pago</button> 
       </form>
     </div>

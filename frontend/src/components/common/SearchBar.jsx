@@ -54,7 +54,7 @@ const SearchBar = () => {
 
     return (
         <div>
-            <form className="d-flex" style={{width: "30rem"}} onSubmit={handleSearch}>
+            <form className="d-flex" style={{width: "100%"}} onSubmit={handleSearch}>
             <div className="input-group">
       
            

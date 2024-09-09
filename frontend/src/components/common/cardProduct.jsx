@@ -13,7 +13,7 @@ const CardProduct = ({ product }) => {
     </div>
 
     <div className="d-flex justify-content-between mt-auto">
-    <a href="#" className="btn btn-primary">${product.price}</a>
+    <a className="btn btn-primary">${product.price}</a>
     <Link to={`/product/${product.id}`} className="btn btn-primary">ver detalles</Link>
     </div>
   </div>

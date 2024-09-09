@@ -46,7 +46,7 @@ const CategoryPage = () => {
               <span className="material-symbols-outlined">arrow_back</span>Atras
             </button>
           </Link>
-      <h1 className='d-flex justify-content-center mt-4'>Category {categoryName}</h1>
+      <h1 className='d-flex justify-content-center mt-4'>{categoryName}</h1>
       <div className='card-container d-flex flex-wrap justify-content-center'>
       
         {products.map((product) => (

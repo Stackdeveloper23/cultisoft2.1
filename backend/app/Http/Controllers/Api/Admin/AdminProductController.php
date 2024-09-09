@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use NumberFormatter;
 
 class AdminProductController extends Controller
 {
@@ -26,6 +27,7 @@ class AdminProductController extends Controller
 
     return response()->json($product, 200);
 }
+
 public function create(Request $request)
 {
     $validatedData = $request->validate([
@@ -34,9 +36,9 @@ public function create(Request $request)
         'description' => 'required|string',
         'price' => 'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
         'image_path' => 'required|string',
-        'quantity' => 'required|integer|min:1',
         'category_id' => 'required|exists:categories,id',
     ]);
+Log::info('producto datos:', $validatedData);
 
     DB::beginTransaction();
 
@@ -59,6 +61,7 @@ public function create(Request $request)
         return response()->json(['error' => 'Fallo al crear el producto'], 500);
     }
 }
+
 
       public function update(Request $request, $id)
 {

@@ -11,6 +11,7 @@ import ShoppingCart from './pages/ShoppingCart';
 import MetodoRetiro from './pages/MetodoRetiro';
 import EnvioDomicilio from './components/compra/EnvioDomicilio';
 import Soporte from './pages/Soporte';
+import RetiroFinca from './components/compra/RetiroFinca';
 
 function App() {
 
@@ -30,6 +31,8 @@ function App() {
       <Route path='cart' element={<ShoppingCart/>}/>   
       <Route path='/customer/compra' element={<MetodoRetiro/>}/>
       <Route path='/customer/compra/domicilio' element={<EnvioDomicilio/>}/>
+      <Route path='/customer/envio/finca' element={<RetiroFinca/>}/>
+      
       </Route>
 
       </Route>

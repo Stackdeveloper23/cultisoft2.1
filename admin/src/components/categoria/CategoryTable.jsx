@@ -5,9 +5,11 @@ import CategoryCreate from "./CategoryCreate";
 
 const CategoryTable = () => {
   const [categories, setCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categoriesPerPage] = useState(5); 
 
   useEffect(() => {
-    const Products = async () => {
+    const fetchCategories = async () => {
       try {
         const response = await Config.getCategories();
         console.log("Response completa:", response);
@@ -24,29 +26,38 @@ const CategoryTable = () => {
       }
     };
 
-    
-
-    Products();
+    fetchCategories();
   }, []);
 
   const deleteCategoryById = async (id) => {
     const isDelete = window.confirm("Delete category?");
     if (isDelete) {
-        try {
-            await Config.deleteCategories(id);
-            window.location.reload();
-          } catch (error) {
-            console.error("Error deleting category:", error);
-          }
+      try {
+        await Config.deleteCategories(id);
+        setCategories((prevCategories) =>
+          prevCategories.filter((category) => category.id !== id)
+        );
+      } catch (error) {
+        console.error("Error deleting category:", error);
+      }
     }
   };
+
+  const indexOfLastCategory = currentPage * categoriesPerPage;
+  const indexOfFirstCategory = indexOfLastCategory - categoriesPerPage;
+  const currentCategories = categories.slice(
+    indexOfFirstCategory,
+    indexOfLastCategory
+  );
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <>
       <h1 className="w-100 d-flex justify-content-center">Category Table</h1>
       <div className="container">
         <div>
-          <CategoryCreate/>
+          <CategoryCreate />
         </div>
         <table className="table">
           <thead>
@@ -54,21 +65,35 @@ const CategoryTable = () => {
               <th scope="col">#</th>
               <th scope="col">Nombre</th>
               <th scope="col">Descripcion</th>
+              <th scope="col">Imagen</th>
               <th scope="col">Creado el:</th>
               <th scope="col">Accion:</th>
             </tr>
           </thead>
           <tbody>
-            {categories.map((category, index) => (
+            {currentCategories.map((category, index) => (
               <tr key={category.id || index}>
-                <th scope="row">{index + 1}</th>
-                {/* <td>{product.id || 'N/A'}</td> */}
+                <th scope="row">{indexOfFirstCategory + index + 1}</th>
                 <td>{category.name || "N/A"}</td>
                 <td>{category.description || "N/A"}</td>
-                <td>{new Date(category.created_at).toLocaleDateString("es-CO") || "N/A"}</td>
+                <td>
+              {category.imagen ? (
+                <img
+                  src={category.imagen}
+                  alt={category.name}
+                  style={{ width: '100px', height: 'auto' }} 
+                    />
+              ) : (
+                "N/A"
+              )}
+            </td>
+                <td>
+                  {new Date(category.created_at).toLocaleDateString("es-CO") ||
+                    "N/A"}
+                </td>
+              
                 <td>
                   <CategoryEdit id={category.id} />
-
                   <button
                     className="btn btn-danger d-flex w-30"
                     onClick={() => deleteCategoryById(category.id)}
@@ -80,8 +105,56 @@ const CategoryTable = () => {
             ))}
           </tbody>
         </table>
+        {/* Paginación */}
+        <nav>
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Anterior
+              </button>
+            </li>
+            {Array.from(
+              { length: Math.ceil(categories.length / categoriesPerPage) },
+              (_, index) => (
+                <li
+                  key={index + 1}
+                  className={`page-item ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
+                >
+                  <button
+                    className="page-link"
+                    onClick={() => paginate(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              )
+            )}
+            <li
+              className={`page-item ${
+                currentPage ===
+                Math.ceil(categories.length / categoriesPerPage)
+                  ? "disabled"
+                  : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Siguiente
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
     </>
   );
 };
+
 export default CategoryTable;
+
