@@ -57,6 +57,7 @@ const Login = () => {
       setMessage("Registration successful!"); // Mensaje de éxito
       setErrors({});
       setIsModalOpen(true);
+      console.log("Modal should be open:", isModalOpen);
       // window.location.reload();
       console.log(data);
     } catch (error) {
@@ -145,9 +146,9 @@ const Login = () => {
 
           {/* Modal */}
           {isModalOpen && (
-            <div className="modal">
-              <div className="modal-content">
-                <span className="close" onClick={closeModal}>
+            <div className="modal" id="modal">
+              <div className="modal-content" id="modal-content">
+                <span className="close" id="close" onClick={closeModal}>
                   &times;
                 </span>
                 <p>Su registro fue exitoso</p>
@@ -211,7 +212,7 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
 
-            <a href="#">¿Olvidaste tu contraseña?</a>
+            <Link to={'/reset-password'}>¿Olvidaste tu contraseña?</Link>
             <button type="submit" value="iniciar sesion" name="boton" >
                 Iniciar Sesion</button>
           </form>

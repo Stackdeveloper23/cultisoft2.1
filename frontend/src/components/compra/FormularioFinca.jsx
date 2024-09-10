@@ -1,19 +1,14 @@
 import { useState } from "react";
 import Config from "../../Config";
 
-const Formulario = () => {
+const FormularioFinca = () => {
   const [formData, setFormData] = useState({
     nombre: '',
     apellidos: "",
     identificacion: '',
-    departamento: "",
-    ciudad: "",
-    barrio: "",
-    direccion: "",
     movil: "",
     movil2: "",
     email: "",
-    referencias: "",
   });
   const [submitted, setSubmitted] = useState(false);
   
@@ -27,7 +22,7 @@ const Formulario = () => {
   const submitCreate = async (e) => {
     e.preventDefault();
     try {
-      const response = await Config.postDatosEnvio(formData);
+      const response = await Config.postDatosEnvioFinca(formData);
       console.log(response.data);
       setSubmitted(true);
     const button = document.querySelector('.w-100.btn.btn-primary.btn-lg');
@@ -85,13 +80,13 @@ const Formulario = () => {
           </div>
 
           <div className="col-12">
-            <label htmlFor="identificacion" className="form-label">Identificacion(NIP)</label>
+            <label htmlFor="identificacion" className="form-label">identificacion(NIP)</label>
             <div className="input-group has-validation">
               <span className="input-group-text">#</span>
               <input
                 type="text"
                 className="form-control"
-                id="movil"
+                id="identificacion"
                 name="identificacion"
                 placeholder="identificacion"
                 value={formData.identificacion}
@@ -99,10 +94,11 @@ const Formulario = () => {
                 required
               />
               <div className="invalid-feedback">
-                Your username is required.
+                Your idenfiticacion is required.
               </div>
             </div>
           </div>
+
 
           <div className="col-12">
             <label htmlFor="movil" className="form-label">Movil</label>
@@ -153,83 +149,6 @@ const Formulario = () => {
             </div>
           </div>
 
-          <div className="col-6">
-            <label htmlFor="direccion" className="form-label">Direccion de envio</label>
-            <input
-              type="text"
-              className="form-control"
-              id="direccion"
-              name="direccion"
-              placeholder="1234 Main St"
-              value={formData.direccion}
-              onChange={Change}
-              required
-            />
-            <div className="invalid-feedback">
-              Please enter your shipping address.
-            </div>
-          </div>
-
-          <div className="col-md-5">
-            <label htmlFor="departamento" className="form-label">Departamento</label>
-            <input
-              type="text"
-              className="form-control"
-              id="departamento"
-              name="departamento"
-              value={formData.departamento}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please select a valid country.
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <label htmlFor="ciudad" className="form-label">Cuidad</label>
-            <input
-              type="text"
-              className="form-control"
-              id="ciudad"
-              name="ciudad"
-              value={formData.ciudad}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-
-          <div className="col-md-4">
-            <label htmlFor="barrio" className="form-label">Barrio</label>
-            <input
-              type="text"
-              className="form-control"
-              id="barrio"
-              name="barrio"
-              value={formData.barrio}
-              onChange={Change}
-            />
-            <div className="invalid-feedback">
-              Please provide a valid state.
-            </div>
-          </div>
-
-          <div className="col-12 mt-3">
-            <label htmlFor="referencias" className="form-label">Referencias Adicionales</label>
-            <textarea
-              className="form-control"
-              id="referencias"
-              name="referencias"
-              placeholder="Apto 301..."
-              value={formData.referencias}
-              onChange={Change}
-              required
-            />
-            <div className="invalid-feedback">
-              Please enter your shipping address.
-            </div>
-          </div>
         </div>
 
         <hr className="my-4"/>
@@ -241,4 +160,4 @@ const Formulario = () => {
   );
 }
 
-export default Formulario;
+export default FormularioFinca;

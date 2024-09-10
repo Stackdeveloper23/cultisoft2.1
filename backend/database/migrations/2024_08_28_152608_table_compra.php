@@ -13,17 +13,18 @@ return new class extends Migration
     {
         Schema::create('compras', function (Blueprint $table) {
             $table->id();
+            $table->string('identificacion');
             $table->string('nombre');
             $table->string('apellidos');
-            $table->string('departamento');
-            $table->string('ciudad');
-            $table->string('barrio');
-            $table->string('direccion');
+            $table->string('departamento')->nullable();
+            $table->string('ciudad')->nullable();
+            $table->string('barrio')->nullable();
+            $table->string('direccion')->nullable();
             $table->string('movil');
-            $table->string('movil2');
-            $table->string('referencias');
+            $table->string('movil2')->nullable();
+            $table->string('referencias')->nullable();
             $table->foreignId('carts_id')->constrained()->onDelete('cascade'); 
-            $table->unique('carts_id'); 
+           // $table->unique('carts_id'); 
             $table->timestamps();
         });
     }

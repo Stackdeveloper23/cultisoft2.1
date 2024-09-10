@@ -5,6 +5,9 @@ import CompraEdit from "./CompraEdit";
 
 const CompraTable = () => {
     const [compras, setCompras] = useState([]);
+    
+  const [currentPage, setCurrentPage] = useState(1);
+  const [categoriesPerPage] = useState(5); 
 
     useEffect(() => {
       const Compras = async () => {
@@ -40,6 +43,16 @@ const CompraTable = () => {
             }
       }
     };
+
+    const indexOfLastCategory = currentPage * categoriesPerPage;
+    const indexOfFirstCategory = indexOfLastCategory - categoriesPerPage;
+    const currentCompras = compras.slice(
+      indexOfFirstCategory,
+      indexOfLastCategory
+    );
+  
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  
   
     return (
         <>
@@ -67,7 +80,7 @@ const CompraTable = () => {
               </tr>
             </thead>
             <tbody>
-              {compras.map((compra, index) => (
+              {currentCompras.map((compra, index) => (
                 <tr key={compra.id || index}>
                   <th scope="row">{index + 1}</th>
                   {/* <td>{product.id || 'N/A'}</td> */}
@@ -96,6 +109,53 @@ const CompraTable = () => {
               ))}
             </tbody>
           </table>
+
+           {/* Paginación */}
+        <nav>
+          <ul className="pagination">
+            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage - 1)}
+              >
+                Anterior
+              </button>
+            </li>
+            {Array.from(
+              { length: Math.ceil(compras.length / categoriesPerPage) },
+              (_, index) => (
+                <li
+                  key={index + 1}
+                  className={`page-item ${
+                    currentPage === index + 1 ? "active" : ""
+                  }`}
+                >
+                  <button
+                    className="page-link"
+                    onClick={() => paginate(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              )
+            )}
+            <li
+              className={`page-item ${
+                currentPage ===
+                Math.ceil(compras.length / categoriesPerPage)
+                  ? "disabled"
+                  : ""
+              }`}
+            >
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage + 1)}
+              >
+                Siguiente
+              </button>
+            </li>
+          </ul>
+        </nav>
         </div>
         </>
     )

@@ -248,4 +248,32 @@ export default {
       },
     });
   },
+
+  getUserCount: () => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/user/count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  getComprasCount: () => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/compras/count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  getProductsCount: () => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/products/count`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 };
+

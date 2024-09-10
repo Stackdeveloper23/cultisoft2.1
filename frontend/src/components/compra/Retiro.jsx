@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 
 const Retiro = () => {
     return(
-        <div className="d-flex justify-content-center" style={{ backgroundColor: " #98FB98", padding:"100px" }}>
+        <div className="d-flex justify-content-center" style={{ padding:"100px" }}>
 
 <div className="row ">
   <div className="card-dialog" role="document">
     <div className="card-content bg-body-secondary rounded-4 shadow">
-      <div className="card-body p-5">
+      <div className="card-body p-5" style={{backgroundColor: " #98FB98", borderRadius: "20px"
+
+      }}>
         <h2 className="fw-bold mb-0">Como quieres recibir tus productos</h2>
 
      
@@ -20,7 +22,7 @@ const Retiro = () => {
                 
 </div>
 <div className="w-100 d-flex justify-content-center">
-<button className="btn btn-lg btn-success w-50">Retiro en la finca</button>
+<button className="btn btn-lg btn-success w-50"><Link className="text-decoration-none text-light" to={'/customer/envio/finca'}>Retiro en la finca</Link></button>
 </div>
 </div>
      </div>

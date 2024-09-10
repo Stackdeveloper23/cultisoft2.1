@@ -8,9 +8,7 @@ use App\Models\Compra;
 use MercadoPago\Client\Preference\PreferenceClient;
 use MercadoPago\Exceptions\MPApiException;
 use MercadoPago\MercadoPagoConfig;
-use App\Models\Product;
 use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -19,8 +17,9 @@ class MercadoPagoService {
     public function __construct()
     {
         try {
-            $mpAccessToken = env('MERCADO_PAGO_ACCESS_TOKEN');
-            MercadoPagoConfig::setAccessToken($mpAccessToken);
+            //$mpAccessToken = env('MERCADO_PAGO_ACCESS_TOKEN', 'valor_predeterminado');
+           
+            MercadoPagoConfig::setAccessToken('APP_USR-3959523974557388-061114-ead28a742613cf1cdd5649b6b6e2bca7-1851796347');
         } catch (\Exception $e) {
             throw new MercadoPagoException();
         }

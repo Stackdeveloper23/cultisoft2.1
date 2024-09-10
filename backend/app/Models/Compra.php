@@ -11,6 +11,7 @@ class Compra extends Model
     protected $fillable = [
         'nombre',
         'apellidos',
+        "identificacion",
         'departamento',
         'ciudad',
         'barrio',

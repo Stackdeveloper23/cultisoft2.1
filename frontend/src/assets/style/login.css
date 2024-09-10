@@ -204,7 +204,7 @@
     transform: translateX(200%);
 }
 
-.modal {
+#modal {
     display: flex;
     position: fixed;
     z-index: 1000; 
@@ -217,7 +217,7 @@
     align-items: center;
 }
 
-.modal-content {
+#modal-content {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -226,7 +226,7 @@
     position: relative;
 }
 
-.close {
+#close {
     position: absolute;
     top: 10px;
     right: 10px;

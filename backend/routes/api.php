@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\ChatbotController;
 use App\Http\Controllers\MercadoPagoController;
@@ -30,6 +31,7 @@ Route::prefix('v1')->group(function () {
   Route::get('/category/{categoryId}/products', [CategoryController::class, 'getProductsByCategory']);
   Route::get('/search', [SearchController::class, 'search']);
   Route::post('/chatbot', [ChatbotController::class, 'handleRequest']);
+  Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
 
 
   //private
@@ -50,6 +52,7 @@ Route::prefix('v1')->group(function () {
     Route::patch('/cart/items/{itemId}', [CartController::class, 'updateQuantity']);
     Route::post('/create-payment-preference', [MercadoPagoController::class, 'createPaymentPreference']);
     Route::post('/compra', [CompraController::class, "create"]);
+    Route::post('/compra/finca', [CompraController::class, "createFinca"]);
     Route::put('/compra/actualizar/{id}', [CompraController::class, 'update']);
     Route::delete('/compra/eliminar/{id}',[CompraController::class, "destroy"]);
     Route::get('/compra/usuario/{id}', [CompraController::class, "show"]);
@@ -74,18 +77,21 @@ Route::prefix('v1')->group(function () {
 
       
       Route::get('/admin/user', [UserController::class, 'index']);
+      Route::get('/admin/user/count', [UserController::class, 'UsersCount']);
       Route::get('/admin/user/{id}', [UserController::class, 'show']);
       Route::post('/admin/user/createUser', [UserController::class, 'create']);
       Route::put('/admin/user/edit/{id}', [UserController::class, 'update']);  
       Route::delete('/admin/user/delete/{id}', [UserController::class, 'destroy']); 
 
       Route::post('/admin/product/create', [AdminProductController::class, 'create']);
+      Route::get('/admin/products/count', [AdminProductController::class, 'ProductCount']);
       Route::get('/admin/product', [AdminProductController::class, 'index']);
       Route::get('/admin/product/{id}', [AdminProductController::class, 'show']);
       Route::put('/admin/product/edit/{id}', [AdminProductController::class, 'update']);  
       Route::delete('/admin/product/delete/{id}', [AdminProductController::class, 'destroy']); 
 
       Route::get('/admin/compras', [CompraController::class, 'index']);
+      Route::get('/admin/compras/count', [CompraController::class, 'ComprasCount']);
       Route::post('/admin/compra/create', [CompraController::class, "create"]);
       Route::put('/admin/compra/actualizar/{id}', [CompraController::class, 'update']);
       Route::delete('/admin/compra/eliminar/{id}',[CompraController::class, "delete"]);

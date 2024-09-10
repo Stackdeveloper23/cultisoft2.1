@@ -12,6 +12,7 @@ import MetodoRetiro from './pages/MetodoRetiro';
 import EnvioDomicilio from './components/compra/EnvioDomicilio';
 import Soporte from './pages/Soporte';
 import RetiroFinca from './components/compra/RetiroFinca';
+import ResetPasswordPage from './components/auth/ResetPasswordPage';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
        <Route path='/category/:categoryId' element={<CategoryPage/>}/>
        <Route path='/product/:id' element={<ProductDetails/>}/>
        <Route path='/soporte' element={<Soporte/>}/>
+       <Route path='/reset-password' element={<ResetPasswordPage/>}/>
 
        <Route element={<ProtectedRoutes/>}>
 

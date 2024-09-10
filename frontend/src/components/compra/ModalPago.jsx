@@ -7,6 +7,31 @@ const ModalPago = () => {
  
   const [cartsId, setCartId] = useState(null);
   const navigate = useNavigate();
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    // Obtener los productos del carrito del usuario
+    const fetchCartItems = async () => {
+      try {
+        const response = await Config.getCartProducts();
+        
+        console.log('Datos del carrito:', response.data);
+        const data = response.data;
+     
+        if (Array.isArray(data.items)) {
+          setCartItems(data.items);
+        } else {
+          console.error('Los datos del carrito no son un array:', data.items);
+          setCartItems([]); 
+        }
+      } catch (error) {
+        console.error('Error al obtener los productos del carrito:', error);
+      }
+    };
+
+    fetchCartItems();
+   
+  }, []);
 
   useEffect(() => {
     const fetchCartId = async () => {
@@ -18,6 +43,10 @@ const ModalPago = () => {
 
     fetchCartId();
   }, []);
+
+  const formatCurrency = (amount) => {
+    return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
+  };
 
   const Cancel = async () => {
     if (!cartsId) {
@@ -39,10 +68,15 @@ const ModalPago = () => {
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id="exampleModalLabel">Tu compra esta casi lista</h1>
-              <button type="button" className="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div className="modal-body">
               Este es el valor total a pagar: 
+              <span id="total" className="h5">
+            {formatCurrency(
+    cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0)
+  )}
+          
+            </span>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={Cancel}>Cancelar Compra</button>

@@ -16,6 +16,16 @@ class UserController extends Controller
       return response()->json($users,200);
       }
 
+      public function UsersCount(){
+
+        $users = User::All();
+
+       $totalUsuarios = $users->count(); 
+
+      return response()->json($totalUsuarios,200);
+      }
+
+
       public function show($id)
 {
     $user = User::find($id);

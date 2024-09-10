@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Config from "../../Config";
 
-const CardResumenProductos = () => {
+const CardResumenFinca = () => {
   
   const [cartItems, setCartItems] = useState([]);
 
@@ -25,7 +25,7 @@ const CardResumenProductos = () => {
     return amount.toLocaleString('es-CO', { style: 'currency', currency: 'COP' });
   };
 
-  //const totalAmount = cartItems.reduce((total, item) => total + parseFloat(item.product.price), 0);
+ // const totalAmount = cartItems.reduce((total, item) => total + parseFloat(item.product.price), 0);
 
 
   return (
@@ -56,8 +56,14 @@ const CardResumenProductos = () => {
           </strong>
         </li>
       </ul>
+
+      <h1>Para retirar tus Productos</h1>
+
+      <p>Estamos ubicados en el Km 5 de Suba a Cota </p>
+
+      <p>El horario de atencio es de lunes a viernes de 8am a 5pm. Puedes venir a cualquier hora</p>
     </div>
   );
 };
 
-export default CardResumenProductos;
+export default CardResumenFinca;

@@ -56,21 +56,9 @@ const Navbar = () => {
       </a>
       {isOpen && (
         <ul className="dropdown-menu show" style={{ top: '50px', right: '0', left: 'auto' }}>
+          
           <li>
-            <a className="dropdown-item" href="#">
-              Settings
-            </a>
-          </li>
-          <li>
-            <a className="dropdown-item" href="#">
-              Profile
-            </a>
-          </li>
-          <li>
-            <hr className="dropdown-divider" />
-          </li>
-          <li>
-            <a className="dropdown-item" onClick={logoutUser}>
+            <a className="dropdown-item" onClick={logoutUser} style={{ cursor: 'pointer' }}>
               Sign out
             </a>
           </li>

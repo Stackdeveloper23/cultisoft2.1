@@ -44,10 +44,18 @@ const Sidervar = () => {
             Productos
           </Link>
         </li>
-        <li>
+       <li>
           <Link to={"/admin/compra"} className="nav-link text-white d-flex">
-            <span className="material-symbols-outlined me-2">shopping_bag</span>
+             <span className="material-symbols-outlined me-2">shopping_bag</span>
             Compras
+          </Link>
+        </li>
+        <li>
+          <Link to={"/admin/soporte"} className="nav-link text-white d-flex">
+          <span className="material-symbols-outlined">
+support_agent
+</span>
+            Soporte
           </Link>
         </li>
       </ul>
@@ -55,7 +63,7 @@ const Sidervar = () => {
 
       <div className="sb-sidenav-footer">
         <div className="small">Logged in as:</div>
-        Cultisoft's Admin
+        Cultisofts Admin
       </div>
     </div>
   );

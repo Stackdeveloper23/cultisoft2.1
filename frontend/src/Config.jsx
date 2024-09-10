@@ -12,6 +12,7 @@ export default{
 
     getLogin: (data)=>axios.post(`${base_api_url}/auth/login`,data),
     
+    getPasswordReset: (data)=>axios.post(`${base_api_url}/reset-password`,data),
 
     getChatbot: (data)=>axios.post(`${base_api_url}/chatbot`,data),
     
@@ -179,6 +180,19 @@ export default{
                 console.error('Error al enviar datos de compra:', error);
             }
           },
+          postDatosEnvioFinca: async (formData) => {
+            const token = getToken();  
+            try {
+                const response = await axios.post(`${base_api_url}/compra/finca`, formData, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                return response;
+            } catch (error) {
+                console.error('Error al enviar datos de compra:', error);
+            }
+          },
 
           deleteCompra: async (cartsId) => {
             const token = getToken();  
@@ -206,6 +220,8 @@ export default{
             console.error('error al enviar el formulario', error)
         }
     },
+
+
     
 
 

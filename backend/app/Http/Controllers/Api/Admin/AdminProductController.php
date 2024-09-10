@@ -17,6 +17,15 @@ class AdminProductController extends Controller
       return response()->json($products,200);
       }
 
+      public function ProductCount(){
+
+        $productos = Product::All();
+
+       $totalProductos = $productos->count(); 
+
+      return response()->json($totalProductos,200);
+      }
+
       public function show($id)
 {
     $product = Product::find($id);
