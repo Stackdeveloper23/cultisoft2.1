@@ -28,7 +28,7 @@ const CarruselImages = () => {
   }, []);
   return (
     <>
-      <h1 className="w-100 d-flex justify-content-center">Category Table</h1>
+      <h1 className="w-100 d-flex justify-content-center">Carrusel</h1>
       <div className="container">
         <div>
         </div>

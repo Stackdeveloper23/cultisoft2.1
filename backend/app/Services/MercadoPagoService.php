@@ -19,7 +19,7 @@ class MercadoPagoService {
         try {
             //$mpAccessToken = env('MERCADO_PAGO_ACCESS_TOKEN', 'valor_predeterminado');
            
-            MercadoPagoConfig::setAccessToken('APP_USR-3959523974557388-061114-ead28a742613cf1cdd5649b6b6e2bca7-1851796347');
+            MercadoPagoConfig::setAccessToken('');
         } catch (\Exception $e) {
             throw new MercadoPagoException();
         }

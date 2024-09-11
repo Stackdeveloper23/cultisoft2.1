@@ -28,7 +28,7 @@ const Sidervar = () => {
         </li>
         <li>
           <Link to={"/admin/carrusel"} className="nav-link text-white d-flex">
-            <span className="material-symbols-outlined me-2">person</span>
+            <span className="material-symbols-outlined me-2">view_carousel</span>
             Carrusel
           </Link>
         </li>
@@ -46,21 +46,19 @@ const Sidervar = () => {
         </li>
         <li>
           <Link to={"/admin/product"} className="nav-link text-white d-flex">
-            <span className="material-symbols-outlined me-2">shopping_bag</span>
+            <span className="material-symbols-outlined me-2">deceased</span>
             Productos
           </Link>
         </li>
-       <li>
+        <li>
           <Link to={"/admin/compra"} className="nav-link text-white d-flex">
-             <span className="material-symbols-outlined me-2">shopping_bag</span>
+            <span className="material-symbols-outlined me-2">shopping_bag</span>
             Compras
           </Link>
         </li>
         <li>
           <Link to={"/admin/soporte"} className="nav-link text-white d-flex">
-          <span className="material-symbols-outlined">
-support_agent
-</span>
+            <span className="material-symbols-outlined me-2">support_agent</span>
             Soporte
           </Link>
         </li>
