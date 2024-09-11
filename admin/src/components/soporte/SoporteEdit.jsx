@@ -82,7 +82,7 @@ edit
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id={`editModalLabel-${id}`}>
-                Editar Usuario
+                Editar Soporte
               </h1>
               <button
                 type="button"

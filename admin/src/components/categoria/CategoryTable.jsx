@@ -63,6 +63,7 @@ const CategoryTable = () => {
           <thead>
             <tr>
               <th scope="col">#</th>
+              <th scope="col">id Categoria</th>
               <th scope="col">Nombre</th>
               <th scope="col">Descripcion</th>
               <th scope="col">Imagen</th>
@@ -74,6 +75,8 @@ const CategoryTable = () => {
             {currentCategories.map((category, index) => (
               <tr key={category.id || index}>
                 <th scope="row">{indexOfFirstCategory + index + 1}</th>
+                
+                <td>{category.id || "N/A"}</td>
                 <td>{category.name || "N/A"}</td>
                 <td>{category.description || "N/A"}</td>
                 <td>

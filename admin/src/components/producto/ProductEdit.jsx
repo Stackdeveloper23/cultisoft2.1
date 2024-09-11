@@ -8,7 +8,6 @@ const ProductEdit = ({ id }) => {
     description: '',
     price: '',
     image_path: '',
-    quantity:'',
     category_id:'',
   });
 
@@ -22,7 +21,6 @@ const ProductEdit = ({ id }) => {
           description: response.data.description,
           price: response.data.price,
           image_path: response.data.image_path,
-          quantity: response.data.quantity,
           category_id: response.data.category_id,
         });
       } catch (error) {
@@ -80,7 +78,7 @@ edit
           <div className="modal-content">
             <div className="modal-header">
               <h1 className="modal-title fs-5" id={`editModalLabel-${id}`}>
-                Editar Usuario
+                Editar Producto
               </h1>
               <button
                 type="button"
@@ -134,7 +132,7 @@ edit
                   </div>  
                   <div className="mb-3">
                     <label htmlFor="price" className="form-label">
-                      Estado
+                      Precio
                     </label>
                     <input
                       className="form-control"
@@ -158,22 +156,10 @@ edit
                       required
                     />
                   </div>
-                   <div className="mb-3">
-                    <label htmlFor="quantity" className="form-label">
-                      Estado
-                    </label>
-                    <input
-                      className="form-control"
-                      id="quantity"
-                      name="quantity"
-                      value={product.quantity}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
+
                   <div className="mb-3">
                     <label htmlFor="category_id" className="form-label">
-                      Estado
+                      Categoria
                     </label>
                     <input
                       className="form-control"

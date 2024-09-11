@@ -27,6 +27,12 @@ const Sidervar = () => {
           </Link>
         </li>
         <li>
+          <Link to={"/admin/carrusel"} className="nav-link text-white d-flex">
+            <span className="material-symbols-outlined me-2">person</span>
+            Carrusel
+          </Link>
+        </li>
+        <li>
           <Link to={"/admin/user"} className="nav-link text-white d-flex">
             <span className="material-symbols-outlined me-2">person</span>
             Usuarios

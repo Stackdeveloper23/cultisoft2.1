@@ -54,7 +54,7 @@ const CategoryCreate = () => {
               <div className="modal-content">
                 <div className="modal-header">
                   <h1 className="modal-title fs-5" id="staticBackdropLabel">
-                    Crear Productos
+                    Crear Categoria
                   </h1>
                   <button
                     type="button"
@@ -70,7 +70,7 @@ const CategoryCreate = () => {
                     <input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
                     <label htmlFor="">Descripcion:</label>
                     <input type="text" value={description} onChange={(e) => setDescription(e.target.value)}/>
-                    <label htmlFor="">Imgen:</label>
+                    <label htmlFor="">Imagen:</label>
                     <input type="text" value={imagen} onChange={(e) => setImagen(e.target.value)}/>
               
                    <div className="d-flex justify-content-center">

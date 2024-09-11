@@ -275,5 +275,41 @@ export default {
       },
     });
   },
+
+  getCarruselImages: () => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/admin/carrusel-images`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  createCarrusel: (data) => {
+    const token = getToken();
+    return axios.post(`${base_api_url}/carrusel/create`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  getCarruselById: (id) => {
+    const token = getToken();
+    return axios.get(`${base_api_url}/carrusel/show/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
+
+  putCarrusel: (data, id) => {
+    const token = getToken();
+    return axios.put(`${base_api_url}/carrusel/update/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  },
 };
 

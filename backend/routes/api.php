@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\Admin\AdminCategoryController;
 use App\Http\Controllers\Api\Admin\AdminProductController;
+use App\Http\Controllers\Api\Admin\CarruselController;
 use App\Http\Controllers\Api\Admin\CompraController;
 use App\Http\Controllers\Api\Admin\SoporteController;
 use App\Http\Controllers\Api\Admin\UserController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ImagenesController;
 use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\ChatbotController;
@@ -32,7 +34,8 @@ Route::prefix('v1')->group(function () {
   Route::get('/search', [SearchController::class, 'search']);
   Route::post('/chatbot', [ChatbotController::class, 'handleRequest']);
   Route::post('/reset-password', [ResetPasswordController::class, 'reset']);
-
+  
+  Route::get('/imagenes-carrusel', [ImagenesController::class, 'index']); 
 
   //private
   Route::group(['middleware' => 'auth:sanctum'], function () {
@@ -102,6 +105,13 @@ Route::prefix('v1')->group(function () {
       Route::put('/admin/soporte/actualizar/{id}', [SoporteController::class, 'update']);
       Route::delete('/admin/soporte/eliminar/{id}',[SoporteController::class, "delete"]);
       Route::get('/admin/soporte/usuario/{id}', [SoporteController::class, "show"]);
+
+      Route::get('/admin/carrusel-images', function () {
+        return App\Models\CaruselImage::all();
+    });
+    Route::put('/carrusel/update/{id}', [CarruselController::class, 'update']); 
+    Route::get('/carrusel/show/{id}', [CarruselController::class, 'show']); 
+//Route::post('/carrusel/create', [CarruselController::class, 'create']);
     });
   });
 });

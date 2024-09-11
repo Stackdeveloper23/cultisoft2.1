@@ -219,7 +219,19 @@ export default{
         } catch (error) {
             console.error('error al enviar el formulario', error)
         }
+
+
     },
+
+    getCarruselImages: () => {
+        try{
+
+            return axios.get(`${base_api_url}/imagenes-carrusel`);
+        }catch(error) {
+            
+            console.error('error al ver las imagenes', error)
+        }
+      },
 
 
     

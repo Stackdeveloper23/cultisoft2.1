@@ -12,6 +12,7 @@ import UserPage from './pageadmin/UserPage';
 import ProductPage from './pageadmin/ProductPage';
 import CompraPage from './pageadmin/CompraPage';
 import SoportePage from './pageadmin/SoportePage';
+import CaruselPage from './pageadmin/CaruselPage';
 
 const App = () => {
     return (
@@ -28,6 +29,7 @@ const App = () => {
                     <Route path='/admin/product' element={<ProductPage/>}/>
                     <Route path="/admin/compra" element={<CompraPage/>}/>
                     <Route path='/admin/soporte' element={<SoportePage/>}/>
+                    <Route path='/admin/carrusel' element={<CaruselPage/>}/>
                 </Route>
             </Routes>
         </Router>
