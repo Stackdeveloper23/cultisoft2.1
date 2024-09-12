@@ -126,6 +126,12 @@ jobs:
         with:
           name: phpApp
 
+      - name: Pwd files in frontend directory after download
+        run: pwd
+      
+      - name: List files in frontend directory after download
+        run: ls -la
+
       - name: Check PHP Version on Azure
         run: |
           php -v
