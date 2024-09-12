@@ -71,7 +71,10 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: node-app
-
+        
+    - name: Pwd files in frontend directory after download
+      run: pwd
+      
     - name: List files in frontend directory after download
       run: ls -la
 
