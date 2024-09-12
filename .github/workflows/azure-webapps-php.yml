@@ -65,6 +65,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-composer-
 
+      - name: Create .env file
+        run: |
+          echo "APP_NAME=Laravel" > ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "APP_ENV=production" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "APP_KEY=" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "APP_DEBUG=false" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "APP_URL=${{ secrets.APP_URL }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "LOG_CHANNEL=stack" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_CONNECTION=mysql" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
+          # Añade más configuraciones según sea necesario
+
       - name: Run composer install if composer.json exists
         if: steps.check_files.outputs.files_exists == 'true'
         run: |
