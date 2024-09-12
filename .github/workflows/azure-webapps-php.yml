@@ -151,6 +151,11 @@ jobs:
            publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
            package: .
 
+        - name: Test Database Connection
+          run: |
+           echo "Testing database connection..."
+           mysql -h ${{ secrets.DB_HOST }} -u ${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }} -e "SHOW DATABASES;"
+
     # Step to run migrations
         - name: Run Laravel Migrations
           run: |
