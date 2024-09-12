@@ -79,7 +79,7 @@ jobs:
           echo "DB_DATABASE=${{ secrets.DB_DATABASE }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
           echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
           echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/.env
-          # Añade más configuraciones según sea necesario
+         
 
       - name: Run composer install if composer.json exists
         if: steps.check_files.outputs.files_exists == 'true'
