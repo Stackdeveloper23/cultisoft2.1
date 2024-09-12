@@ -134,11 +134,9 @@ jobs:
       # Step to run migrations
       - name: Run Laravel Migrations
         run: |
-          cd ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           php artisan migrate --force
 
       # Step to run seeders
       - name: Run Laravel Seeders
         run: |
-          cd ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           php artisan db:seed --force
