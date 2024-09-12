@@ -93,12 +93,17 @@ jobs:
           composer install --prefer-dist --no-progress --no-scripts
           php artisan key:generate
           php artisan config:cache
-
+          
+      - name: List files in the backend directory
+        run: |
+          ls -la ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+    
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
           name: phpApp
-          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          path: ./cultisoft2.1/backend
+          if-no-files-found: error
 
   deploy:
     permissions:
