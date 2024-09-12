@@ -73,7 +73,6 @@ jobs:
         name: node-app
 
     - name: List files in frontend directory after download
-      working-directory: 'frontend'
       run: ls -la
 
     - name: 'Deploy to Azure WebApp'
