@@ -1,3 +1,4 @@
+
 import Cardpage from "../components/CardPage"
 import Navbar from "../components/Navbar"
 import Sidervar from "../components/Sidevar"
@@ -29,7 +30,7 @@ const PanelAdmin = () => {
                     <div className="row justify-content-center mt-5 mb-5">
                         <div className="col-sm-12">
                             <h1 className="text-center">Admin</h1>
-                            <Cardpage />
+                            <Cardpage/>
                             <GraficCards />
                             <TrafficGrafic/>
                             <Grafico/>
