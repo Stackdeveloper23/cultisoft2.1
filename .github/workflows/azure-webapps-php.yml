@@ -161,7 +161,7 @@ jobs:
           run: |
             php artisan migrate --force
 
-    # Step to run seeders
+    
         - name: Run Laravel Seeders
           run: |
            php artisan db:seed --force
