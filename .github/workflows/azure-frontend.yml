@@ -52,7 +52,7 @@ jobs:
         context: ./frontend
         file: ./frontend/Dockerfile
         push: true
-        tags: cultisoftrepo/frontend:latest  
+        tags: cultisoft2.1/frontend:latest  
         # Reemplaza `your-docker-repo/your-image-name` con tu repositorio e imagen Docker.
 
   deploy:
@@ -63,6 +63,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
-        images: cultisoftrepo/frontend:latest  
+        images: cultisoft2.1/frontend:latest  
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FR0NTEND }}
     
