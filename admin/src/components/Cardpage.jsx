@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Cardpage = () => {
+const CardPage = () => {
     return(
         <div className="row">
                            
@@ -64,4 +64,4 @@ const Cardpage = () => {
                             </div>
     )
 }
-export default Cardpage;
+export default CardPage;

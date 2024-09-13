@@ -1,10 +1,11 @@
 
-import Cardpage from "../components/CardPage.jsx"
+import CardPage from "../components/CardPage.jsx"
 import Navbar from "../components/Navbar.jsx"
 import Sidervar from "../components/Sidevar.jsx"
 import GraficCards from "../components/graficos/GraficCards.jsx"
 import Grafico from "../components/graficos/Grafico.jsx"
 import TrafficGrafic from "../components/graficos/TrafficGrafic.jsx"
+
 
 
 const PanelAdmin = () => {
@@ -30,7 +31,7 @@ const PanelAdmin = () => {
                     <div className="row justify-content-center mt-5 mb-5">
                         <div className="col-sm-12">
                             <h1 className="text-center">Admin</h1>
-                            <Cardpage/>
+                            <CardPage/>
                             <GraficCards />
                             <TrafficGrafic/>
                             <Grafico/>
