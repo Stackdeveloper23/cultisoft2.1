@@ -1,10 +1,10 @@
 
-import Cardpage from "../components/CardPage"
-import Navbar from "../components/Navbar"
-import Sidervar from "../components/Sidevar"
-import GraficCards from "../components/graficos/GraficCards"
-import Grafico from "../components/graficos/Grafico"
-import TrafficGrafic from "../components/graficos/TrafficGrafic"
+import Cardpage from "../components/CardPage.jsx"
+import Navbar from "../components/Navbar.jsx"
+import Sidervar from "../components/Sidevar.jsx"
+import GraficCards from "../components/graficos/GraficCards.jsx"
+import Grafico from "../components/graficos/Grafico.jsx"
+import TrafficGrafic from "../components/graficos/TrafficGrafic.jsx"
 
 
 const PanelAdmin = () => {
