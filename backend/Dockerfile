@@ -25,12 +25,8 @@ WORKDIR /home/site/wwwroot/public
 # Copia los archivos al directorio de trabajo
 COPY . .
 
-# Configura Apache
-COPY ./apache/httpd.conf /etc/apache2/apache2.conf
-COPY ./apache/000-default.conf /etc/apache2/sites-available/000-default.conf
-
 # Asegura permisos adecuados
-RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /home/site/wwwroot/public
 RUN a2enmod rewrite
 
 # Instala las dependencias de Composer
