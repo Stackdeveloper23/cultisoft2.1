@@ -21,7 +21,7 @@ const Login = () => {
 
   const submitLogin = async (e) => {
     e.preventDefault();
-    await axios.get("https://backendcultisoft.azurewebsites.net/santum/csrf-cookie").then(() => {
+    await axios.get("https://backendcultisoft.azurewebsites.net/sanctum/csrf-cookie").then(() => {
       Config.getLogin({ email, password }).then(({ data }) => {
         if (data.success) {
           console.log(data);
