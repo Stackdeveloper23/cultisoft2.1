@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const base_api_url = "http://localhost:8000/api/v1";
+const base_api_url = "https://backendcultisoft.azurewebsites.net/api/v1"; //http://localhost:8000/api/v1
 
 const getToken = () => {
   const tokenString = sessionStorage.getItem("token");
