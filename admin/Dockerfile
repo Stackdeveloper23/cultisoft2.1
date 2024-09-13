@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install 
 COPY . .
-RUN npm run build --no-cache
+RUN npm run build 
 
 # Etapa de producción
 FROM httpd:2.4
