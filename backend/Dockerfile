@@ -8,13 +8,10 @@ RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
     libzip-dev \
     unzip \
-    git
-
-# Configura PHP
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd
-RUN docker-php-ext-install zip
-
+    git \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd zip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Copia el archivo composer.phar al contenedor
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -26,8 +23,8 @@ WORKDIR /home/site/wwwroot/public
 COPY . .
 
 # Asegura permisos adecuados
-RUN chown -R www-data:www-data /home/site/wwwroot/public
-RUN a2enmod rewrite
+RUN chown -R www-data:www-data /home/site/wwwroot/public \
+    && a2enmod rewrite
 
 # Instala las dependencias de Composer
 RUN composer install --no-dev --optimize-autoloader
