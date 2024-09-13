@@ -19,11 +19,11 @@ RUN docker-php-ext-install zip
 # Copia el archivo composer.phar al contenedor
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Copia los archivos de la aplicación al contenedor
-COPY . /var/www/html
-
 # Establece el directorio de trabajo
-WORKDIR /var/www/html
+WORKDIR /home/site/wwwroot/public
+
+# Copia los archivos al directorio de trabajo
+COPY . .
 
 
 # Instala las dependencias de Composer
